@@ -1,0 +1,604 @@
+%Include things
+\documentclass{report}
+\usepackage{graphicx}
+\usepackage{amssymb}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+\usepackage[left=0.5in,top=1.0in,right=0.5in,bottom=1.0in]{geometry} % Document margins
+\usepackage{amsmath}
+ \usepackage[noindentafter]{titlesec}
+\titleformat{\chapter}
+  {\normalfont\huge\bfseries}{\noindent Chapter \thechapter:}{0.5em}{}
+  \setcounter{chapter}{+11}
+% this alters "before" spacing (the second length argument) to 0
+\titlespacing*{\chapter}{0pt}{0pt}{0pt}
+%My own macros
+\newcommand{\Fin}{$f^{-1}$}
+\newcommand{\ddx}{$\frac{d}{dx}$}
+\newcommand{\Rt}{$\mathbb{R}^3\;$}
+\newcommand{\vu}{$\mathbf{u}\;$}
+\newcommand{\vv}{$\mathbf{v}\;$}
+\newcommand{\va}{$\mathbf{a}\;$}
+\newcommand{\vb}{$\mathbf{b}\;$}
+\newcommand{\vc}{$\mathbf{c}\;$}
+
+
+
+\titleformat{\section}
+  {\normalfont\Large\bfseries}{\noindent Lesson \thesection:}{0.5em}{}
+
+\title{\textbf{Notes from MAT397 - Calculus III}}
+\author{\textbf{Notetaker: }Grant Griffiths}
+\date{\textbf{Semester: }Summer Session I 2012 - Syracuse University}
+\begin{document}
+   \maketitle
+   \tableofcontents 
+\chapter{Vectors and The Geometry of Space}
+	\section{Three Dimensional Coordinate Systems}
+		\begin{itemize}\addtolength{\leftskip}{2em}
+			\item \textbf{Coordinate Planes}
+				\subitem \textbf{XY-Plane:} Z is always 0 and x,y can be any real numbers
+				\subitem \textbf{XZ-Plane:} Y is always 0 and x,z can be any real numbers
+				\subitem \textbf{YZ-Plane:} X is always 0 and y,z can be any real numbers
+			\item These three coordinate planes divide space into eight parts, call \textbf{octants}. The first octant is where x,y,z are all positive.
+			\item A point P in \Rt with coordinates (x,y,z) is in the \textbf{three-dimensional rectangular coordinate system.}
+			\item \textbf{Distance Formula in Three Dimensions}: The distance $|P_1P_2|$ between the points $P_1$ and $P_2$ is
+			\subitem \large$|P_1P_2|=\sqrt{(x_2-x_1)^2+(y_2-y_1)^2+(z_2-z_1)^2}$
+			\item \textbf{Equation of a Sphere:} An equation of a sphere with center C(h,h,l) and radius r is
+			\subitem \large$(x-h)^2+(y-k)^2+(z-l)^2=r^2$
+			\subitem In particular, if the center is the origin O, then the equation for the sphere is $x^2+y^2+z^2=r^2$
+			
+		\end{itemize}
+	\section{Vectors}
+		\begin{itemize}\addtolength{\leftskip}{2em}
+			\item \textbf{Definition of Vector Addition:} If \vu and \vv are vector positioned so the initial point of \vv is at the terminal pointer of \vu, then the \textbf{sum} \vv+\vu is the vector from the initial point of \vu to the terminal point of \vv.
+			\item \textbf{Definition of Scalar Multiplication:} If c is a scalar and \vv is a vector, then the \textbf{scalar multiple} c\vv is the vector whose length is $|c|$ times the length of \vv and whose direction is the same as \vv if $c>0$ and opposite to \vv if $c<0$. if $c=0$ or $v=0$, then c\vv=0.
+			\item Vectors are \textbf{parallel} if they are scalar multiples of one another.
+			\item If a vector has the same magnitude but opposite direction, we call it the \textbf{negative} of \vv
+			\item \textbf{Vector subtraction}: $\mathbf{u}-\mathbf{v}=\mathbf{u}+(-\mathbf{v})$
+			\item \textbf{Components of a Vector:} $\mathbf{a}=\langle a_1,a_2,a_3\rangle$ where $a_1$, $a_2$, and $a_3$ are the \textbf{components}
+			\item \textbf{Position Vector:} Vector from the origin to a point.
+				\subitem Given the points $A(x_1,y_1,z_1)$ and $B(x_2,y_2,z_2)$, the vector $\mathbf{a}$ with representation $\overrightarrow{AB}$ is
+					\subsubitem $\overrightarrow{AB}=\langle x_2-x_1,y_2-y_1,z_2-z_1 \rangle$
+			\item \textbf{The Magnitude of a vector:} The square root of the sum of all the components squared.
+				\subitem $|\mathbf{a}|=\sqrt{a_1^2+a_2^2}$ or $|\mathbf{a}|=\sqrt{a_1^2+a_2^2+a_3^2}$
+			\item \textbf{Vector Operations:} If $\mathbf{a}= \langle a_1,a_2 \rangle$ and $\mathbf{b}=\langle b_1,b_2 \rangle$, then
+			\subitem \large$\mathbf{a}+\mathbf{b}=\langle a_1+b_1,a_2+b_2 \rangle$
+			\subitem \large$\mathbf{a}-\mathbf{b}=\langle a_1-b_1,a_2-b_2 \rangle$
+			\subitem \large$c\mathbf{a}=\langle ca_1,ca_2 \rangle$
+			\newpage
+			\item \textbf{Properties of Vectors:} If $\mathbf{a}$, $\mathbf{b}$, $\mathbf{c}$ are vectors in $V_n$, and $c$ and $d$ are scalars, then
+			\begin{enumerate}\addtolength{\leftskip}{4em}
+				\item \large$\mathbf{a}+\mathbf{b}=\mathbf{b}+\mathbf{a}$
+				\item \large$\mathbf{a}+(\mathbf{b}+\mathbf{c})=(\mathbf{a}+\mathbf{b})+\mathbf{c}$
+				\item \large$\mathbf{a}+0=\mathbf{a}$
+				\item \large$\mathbf{a}+-(\mathbf{a})=0$
+				\item \large$c(\mathbf{a+b})=c\mathbf{a}+c\mathbf{b}$
+				\item \large$(c+d)\mathbf{a}=c\mathbf{a}+d\mathbf{a}$
+				\item \large$(cd)\mathbf{a}=c(d\mathbf{a})$
+				\item \large$1\mathbf{a}=\mathbf{a}$
+			\end{enumerate}
+			\item \textbf{Standard Basis Vectors:}
+			\subitem \large$\hat{i}=\langle 1,0,0 \rangle$
+			\subitem \large$\hat{j}=\langle 0,1,0 \rangle$
+			\subitem \large$\hat{k}=\langle 0,0,1 \rangle$
+			\item \textbf{Unit Vectors:}
+			\subitem Vector divided by it's magnitude. \huge$\frac{\mathbf{a}}{|\mathbf{a}|}$
+ 		\end{itemize}
+	\section{The Dot Product}
+		\begin{itemize}\addtolength{\leftskip}{2em}
+			\item \textbf{Definition: }If $\mathbf{a}=\langle a_1,a_2,a_3 \rangle$ and $\mathbf{b}=\langle b_1,b_2,b_3 \rangle$, then the \textbf{dot product} is t he number $a\cdot b=a_1b_1+a_2b_2+a_3b_3$
+			\item \textbf{Properties of Dot Products:} \va, \vb, and \vc are vectors in $V_3$ and $c$ is a scalar, then\
+			\begin{enumerate}\addtolength{\leftskip}{4em}
+				\item \large$a\cdot a=|a|^2$
+				\item \large$a\cdot b=b\cdot a$
+				\item \large$a\cdot (b+c)=a\cdot b+a\cdot c$
+				\item \large$(ca)\cdot b=c(a\cdot b)=a\cdot (cb)$
+				\item \large$0\cdot a=0$
+			\end{enumerate}
+			\large\item \textbf{Theorem:} If $\theta$ is  the angle between the vectors \va and \vb, then
+				\subitem $a\cdot b=|a||b|cos\theta$
+			\large\item \textbf{Corollary} If $\theta$ is the angle between the nonzero vectors $\mathbf{a}$ and $\mathbf{b}$, then
+				\subitem $cos\,\theta=\frac{\mathbf{a}\cdot\mathbf{b}}{|a|\,|b|}$
+			\large\item The vectors $\mathbf{a}$ and $\mathbf{b}$ are orthogonal if and only if $a\cdot b=0$
+			\large\item \textbf{Scalar projection} of $\mathbf{b}$ onto $\mathbf{a}$:
+				\Large\subitem $comp_a\mathbf{b}=\frac{a\cdot b}{|a|}$
+			\large\item \textbf{Vector projection} of $\mathbf{b}$ onto $\mathbf{a}$:
+				\Large\subitem $proj_a\mathbf{b}=(\frac{a\cdot b}{|a|})\frac{a}{|a|}=\frac{\mathbf{a}\cdot\mathbf{b}}{|\mathbf{a}|^2}\mathbf{a}$
+		\end{itemize}
+	\section{The Cross Product}
+		\begin{itemize}\addtolength{\leftskip}{2em}
+			 \large\item \textbf{Definition:} If $\mathbf{a}= \langle a_1,a_2,a_3 \rangle$ and $\mathbf{b}=\langle b_1,b_2,b_3 \rangle$, then the \textbf{cross product} of $\mathbf{a}$ and $\mathbf{b}$ is the vector
+					\Large\subitem $\mathbf{a}\times \mathbf{b}=\langle a_2b_3-a_3b_2,a_3b_1-a_1b_3,a_1b_2-a_2b_1 \rangle$
+			\large\item \textbf{Theorem: }The vector $\mathbf{a}\times \mathbf{b}$ is orthogonal to both $\mathbf{a}$ and $\mathbf{b}$.
+			\large\item \textbf{Theorem: }If $\theta$ is the angle between \va and \vb, then
+			\subitem \Large$|\mathbf{a}\times \mathbf{b}|=|a||b|sin\,\theta$
+			\large\item \textbf{Corollary: }Two nonzero vectors \va and \vb are parallel if and only if
+				\subitem \Large$\mathbf{a}\times\mathbf{b}=0$
+			 \large\item The magnitude of the cross product $\mathbf{a}\times\mathbf{b}$ is equal to the area of the parallelogram determined by $\mathbf{a}$ and $\mathbf{b}$.
+			\item \textbf{Theorem:} If \va, \vb, and \vc are vectors and c is a scalar, then
+			\begin{enumerate}\addtolength{\leftskip}{4em}
+				\item $\mathbf{a}\times\mathbf{b}=-\mathbf{b}\times\mathbf{a}$
+				\item $(c\mathbf{a})\times\mathbf{b}=c(\mathbf{a}\times\mathbf{b})=\mathbf{a}\times(c\mathbf{b})$
+				\item $\mathbf{a}\times(\mathbf{b}+\mathbf{c})=\mathbf{a}\times\mathbf{b}+\mathbf{a}\times\mathbf{c}$
+				\item $(\mathbf{a}+\mathbf{b})\times\mathbf{c}=\mathbf{a}\times\mathbf{c}+\mathbf{b}\times\mathbf{c}$
+				\item $\mathbf{a}\cdot(\mathbf{b}\times\mathbf{c})=(\mathbf{a}\times\mathbf{b})\cdot\mathbf{c}$
+				\item $\mathbf{a}\times(\mathbf{b}\times\mathbf{c})=(\mathbf{a}\cdot\mathbf{c})\mathbf{b}-(\mathbf{a}\cdot\mathbf{b})\mathbf{c}$
+			\end{enumerate}
+			\item \large The \textbf{volume of the parallelpiped} determined by the vectors \va,\vb, and \vc is the magnitude of their scalar triple product:
+				\subitem \Large $V=|\mathbf{a}\cdot(\mathbf{b}\times\mathbf{c})|$
+		\end{itemize}
+	\section{Equations of Lines and Planes}
+		\begin{itemize}\addtolength{\leftskip}{2em}
+			\large\item \textbf{Vector Equation} of a Line 
+			\subitem \Large $\mathbf{r}=\mathbf{r}_0+t\mathbf{v}$
+			\large\item  \textbf{Parametric Equations} of a Line
+				\subitem \Large $x=x_0+at$
+				\subitem \Large $y=y_0+bt$
+				\subitem \Large $z=z_0+ct$
+			\large\item \textbf{Symmetric Equations} of a Line
+				\subitem\huge $\frac{x-x_0}{a}=\frac{y-y_0}{b}=\frac{z-z_0}{c}$
+			\large\item The line segment from $r_0$ to $r_1$ is given by the vector equation $\mathbf{r}(t)=(1-t)\mathbf{r_0}+t\mathbf{r_1}\quad\quad0\le t\le 1$
+			\item \textbf{Vector Equation of the plane}:
+			\subitem $\mathbf{n}\cdot (\mathbf{r}-\mathbf{r_0})=0$
+			\subitem $\mathbf{n}\cdot\mathbf{r}=\mathbf{n}\cdot\mathbf{r_0}$
+			\item \textbf{Scalar Equation of the Plane} through $P_0(x_0,y_0,z_0$ with normal vector $\mathbf{n}=\langle a,b,c\rangle$:
+			\subitem \Large $a(x-x_0)+b(y-y_0)+c(z-z_0)=0$
+			\large\subitem At $P_0(0,0,0)$, can be rewritten as $ax+by+cz+d=0$ where $d=-(ax_0+by_0+cz_0)$.
+			\large\item Two planes are \textbf{parallel} if their normal vectors are parallel.
+			\item \textbf{Distance between two planes:}
+			\subitem\huge $D=\frac{|ax_1\,+\,by_1\,+\,cz_1\,+\,d|}{\sqrt{a^2\,+\,b^2\,+\,c^2}}$
+		\end{itemize}
+	\section{Cylinders and Quadric Surfaces}
+		\begin{itemize}\addtolength{\leftskip}{2em}
+			\item \textbf{Quadric Surface General Equation}
+				\subitem $Ax^2+By^2+Cz^2+Dxy+Eyz+Fxz+Gx+Hy+Iz+J=0$
+			\item \textbf{Cylinder:} A surface that consist of all lines that are parallel to a given line and pass through a given plane curve.
+			\item \textbf{Parabolic Cylinder:} Surface made up infinitely many shifted copies of the same parabola.
+			
+			\begin{figure}[ht!]
+			\centering
+			\includegraphics[width=142mm]{126.jpg}
+			\caption{\small Image from Calculus Early Transcendentals 6th Edition}
+			\label{overflow}
+			\end{figure}
+		\end{itemize}
+\chapter{Vector Functions}
+	\section{Vector Functions and Space Curves}
+		\begin{itemize}\addtolength{\leftskip}{2em}
+			\item \textbf{Vector Function:} A function whose domain is a set of real numbers and whose range is a set of vectors.
+				\subitem $\mathbf{r}(t)=\langle f(t),g(t),h(t) \rangle = f(t)\hat{i}+g(t)\hat{j}+h(t)\hat{k}$ 
+			\item The \textbf{limit} of a vector function $\mathbf{r}$ is defined by taking the limits of its component functions as follows.
+				\subitem If $\mathbf{r}(t)=\langle \lim\limits_{t\rightarrow a}f(t),\lim\limits_{t\rightarrow a}g(t),\lim\limits_{t\rightarrow a}h(t) \rangle$\newline provided the limits of the component functions exist.
+			\item A vector function $\mathbf{r}$ is \textbf{continuous} at $a$ if 
+				\subitem \Large$\lim\limits_{t\rightarrow a}\mathbf{r}(t)=\mathbf{r}(a)$
+			\large\item \textbf{Parametric equations of a curve C} with a \textbf{parameter} $t$:
+				\subitem \Large $x=f(t)\quad\quad\quad y=g(t)\quad\quad\quad z=h(t)$
+		\end{itemize}
+	\section{Derivatives and Integrals of Vector Functions}
+		\begin{itemize}\addtolength{\leftskip}{2em}
+			\item \textbf{Derivative of a vector function} $\mathbf{r}$:
+				\subitem \huge$\frac{d\mathbf{r}}{dt}=\mathbf{r}\,'(t)=\lim\limits_{h\rightarrow 0}\frac{\mathbf{r}(t+h)-\mathbf{r}(t)}{h}$
+			\large\item \textbf{Tangent Vector:} $\mathbf{r}'(t)$
+			\item \textbf{Unit Tangent Vector:}
+				\subitem\Large $\mathbf{T}(t)=\frac{\mathbf{r}'(t)}{|\mathbf{r}'(t)|}$
+			\large\item \textbf{Theorem:} If $\mathbf{r}(t)=\langle f(t),g(t),g(t) \rangle=f(t)\hat{i}+g(t)\hat{j}+h(t)\hat{k}$ where $f$, $g$, and $h$ are differentiable functions, then
+				\subitem\Large $\mathbf{r}\,'(t)=\langle f'(t),g'(t),g'(t) \rangle=f'(t)\hat{i}+g'(t)\hat{j}+h'(t)\hat{k}$
+			\large \item \textbf{Theorem:} Suppose $\mathbf{u}$ and $\mathbf{v}$ are differentiable vector functions, $c$ is a scalar, and $f$ is a real-valued function. Then
+				\begin{enumerate}\addtolength{\leftskip}{4em}
+					\large \item \textbf{Sums}: \Large$\frac{d}{dt}[\mathbf{u}(t)+\mathbf{v}(t)]=\mathbf{u}\,'(t)+\mathbf{v}\,'(t)$
+					\large \item \textbf{Scalars}: \Large$\frac{d}{dt}[c\mathbf{u}(t)]=c\mathbf{u}\,'(t)$
+					\large \item \textbf{Product Rule} (Multiplicative): \Large$\frac{d}{dt}[f(t)\mathbf{u}(t)]=f'(t)\mathbf{u}(t)+f(t)\mathbf{u}\,'(t)$
+					\large \item \textbf{Product Rule} (Dot Product): \Large$\frac{d}{dt}[\mathbf{u}(t)\cdot \mathbf{v}(t)]=\mathbf{u}\,'(t)\cdot \mathbf{v}(t)+\mathbf{u}(t)\cdot \mathbf{v}\,'(t)$
+					\large \item \textbf{Product Rule} (Cross Product): \Large$\frac{d}{dt}[\mathbf{u}(t)\times \mathbf{v}(t)]=\mathbf{u}\,'(t)\times \mathbf{v}(t)+\mathbf{u}(t)\times \mathbf{v}\,'(t)$
+					\large \item \textbf{Chain Rule}: \Large$\frac{d}{dt}[\mathbf{u}(f(t))]=f'(t)\mathbf{u}\,'(f(t))$
+				\end{enumerate}
+				\item \textbf{Definite Integral of a vector function:} 
+				\subitem $\int\limits_{a}^{b}\textbf{r}(t)\,dt=(\int\limits_{a}^{b}f(t)\,dt)\hat{i}+(\int\limits_{a}^{b}g(t)\,dt)\hat{j}+(\int\limits_{a}^{b}h(t)\,dt)\hat{k}$
+		\end{itemize}
+	\section{Arc Length and Curvature}
+		\begin{itemize}\addtolength{\leftskip}{2em}
+			\item \textbf{Arc Length of a function function:}
+				\subitem $L=\int\limits_{a}^{b}|\textbf{r}'(t)|\,dt$
+			\item A parametrization $\textbf{r}(t)$ is called \textbf{smooth} on an interval \textit{I} if \textbf{r}' is continuous and $\textbf{r}'(t) \ne 0$
+			\item \textbf{Definition:} The \textbf{curvature} of a curve is
+				\subitem \Large $\kappa (t)=\frac{|\textbf{T}'(t)|}{|\textbf{r}'(t)|}$
+			\large\item \textbf{Theorem:} The curvature of the curve give by the vector function \textbf{r} is 
+				\subitem \Large$\kappa (t)=\frac{|\textbf{r}'(t)\times \textbf{r}''(t)|}{|\textbf{r}'(t)|^3}$
+			\large\item \textbf{Unit Normal Vector:}
+				\subitem \Large $\textbf{N}(t)=\frac{\textbf{T}'(t)}{|\textbf{T}'(t)|}$
+			\large\item \textbf{Binormal Vector:}
+				\subitem \Large $\textbf{B}(t)=\textbf{T}(t)\times \textbf{N}(t)$
+		\end{itemize}
+	\section{Motion in Space: Velocity and Acceleration}
+		\begin{itemize}\addtolength{\leftskip}{2em}
+			\item \textbf{Velocity Vector v}(t) at time $t$
+				\Large\subitem $\textbf{v}(t)=\lim\limits_{h\rightarrow 0}\frac{\textbf{r}(t+h)-\textbf{r}(t)}{h}=\textbf{r}'(t)$
+				\large\item The speed of a particle at a time is the magnitude of the velocity $|\textbf{v}(t)|$
+				\item\textbf{Acceleration} of a particle: \Large$\textbf{a}(t)=\textbf{v}'(t)=\textbf{r}''(t)$
+				\large\item \textbf{Parametric Equations of Trajectory}: 
+					\begin{center}
+					 \Large$x=(v_0 \,cos\,\alpha)\,t\quad\quad\quad y=(v_0 \,sin\,\alpha)\,t-\frac{1}{2}gt^2$
+					\end{center}
+				\large\item Acceleration of a particle(2): \Large$\textbf{a}=v'\,\textbf{T}+\kappa v^2\textbf{N}$
+		\end{itemize}
+\chapter{Partial Derivatives}
+	\section{Functions of Several Variables}
+		\begin{itemize}\addtolength{\leftskip}{2em}
+			\item \textbf{Function} $\textbf{f}$ \textbf{of two variables}: $f(x,y)$
+			\item \textbf{Level Curves} of a function $f$ are the curves with equation $f(x,y)=k$ where $k$ is a constant
+			\item \textbf{Function} $\textbf{f}$ \textbf{of three variables}: $f(x,y,z)$
+		\end{itemize}
+	\section{Limits and Continuity}
+		\begin{itemize}\addtolength{\leftskip}{2em}
+			\item \textbf{Definition:} Let $f$ be a function of two  variables whose domain D includes points arbitrarily close to $(a,b)$. Then we say that the \textbf{limit of} $\textbf{f(x,y)}$ as $\textbf{x,y}$ \textbf{approaches (a,b)} is L and we write:
+				\begin{center}
+				\Large $\lim\limits_{(x,y)\rightarrow (a,b)}f(x,y)=L$
+				\end{center} 
+				\subitem \large if for every $\epsilon >0$ there is a corresponding number $\delta >0$ such that
+				\subitem $(x,y) \in D$ and $0<\sqrt{(x-a)^2+(y-b)^2}<\delta$ then $|f(x,y)-L|<\epsilon$  
+			\item If the limit as $f(x,y)$ approaches a point $P$ is different with different paths, then the limit does not exist at $P$.
+			\item \textbf{Definition:} A function $f$ of two variables is called \textbf{continuous} at $(a,b)$ if
+			\begin{center}
+				$\lim\limits_{(x,y)\rightarrow (a,b)}f(x,y)=f(a,b)$
+			\end{center} 
+			\subitem We say $f$ is \textbf{continuous on D} if $f$ is continuous at every point $(a,b)$ in D
+		\end{itemize}
+	\section{Partial Derivatives}
+		\begin{itemize}\addtolength{\leftskip}{2em}
+			\item \textbf{Partial Derivative} of $f$ with respect to $x$ at $(a,b)$:
+			\begin{center}
+			\Large$f_x(a,b)=g'(a)\quad\quad\quad$ where $\quad\quad\quad g(x)=f(x,b)$
+			\end{center}
+			\item If $f$ is a function of two variables, its \textbf{partial derivatives} are the functions $f_x$ and $f_y$ defined by
+			\begin{center}
+			$f_x(x,y)=\lim\limits_{h\rightarrow 0}\frac{f(x+h,y)-(fx,y)}{h}$
+			\end{center}
+			\begin{center}
+			$f_y(x,y)=\lim\limits_{h\rightarrow 0}\frac{f(x,y+h)-(fx,y)}{h}$
+			\end{center}
+			\item \textbf{Notations for Partial Derivatives:} If $z=f(x,y)$ we write
+			\begin{center}
+			\Large$f_x(x,y)=f_x=\frac{\partial f}{\partial x}=\frac{\partial}{\partial x}f(x,y)=\frac{\partial z}{\partial x}=f_1=D_1f=D_xf$
+			\end{center}
+			\begin{center}
+			\Large$f_y(x,y)=f_y=\frac{\partial f}{\partial y}=\frac{\partial}{\partial y}f(x,y)=\frac{\partial z}{\partial y}=f_2=D_2f=D_yf$
+			\end{center}
+			\item \textbf{Rule for Finding Partial Derivative of $z=f(x,y)$}
+			\begin{enumerate}\addtolength{\leftskip}{4em}
+				\item To find $f_x$, regard y as a constant and differentiate $f(x,y)$ with respect to x
+				\item To find $f_y$, regard x as a constant and differentiate $f(x,y)$ with respect to y
+			\end{enumerate}
+			\item \textbf{Second Partial Derivatives} of $f$:
+			\begin{center}
+			\Large$(f_x)_x=f_{xx}=f_{11}=\frac{\partial}{\partial x}(\frac{\partial f}{\partial x})=\frac{\partial ^2f}{\partial x^2}=\frac{\partial ^2z}{\partial x^2}$
+			\end{center}
+			\begin{center}
+			\Large$(f_x)_y=f_{xy}=f_{12}=\frac{\partial}{\partial y}(\frac{\partial f}{\partial x})=\frac{\partial ^2f}{\partial y \,\partial x}=\frac{\partial ^2z}{\partial y \, \partial x}$
+			\end{center}
+			\begin{center}
+			\Large$(f_y)_x=f_{yx}=f_{21}=\frac{\partial}{\partial x}(\frac{\partial f}{\partial y})=\frac{\partial ^2f}{\partial x \,\partial  y}=\frac{\partial ^2z}{\partial x \, \partial y}$
+			\end{center}
+			\begin{center}
+			\Large$(f_y)_y=f_{yy}=f_{22}=\frac{\partial}{\partial y}(\frac{\partial f}{\partial y})=\frac{\partial ^2f}{\partial  y^2}=\frac{\partial ^2z}{\partial y^2}$
+			\end{center}
+			\item \textbf{Clairaut's Theorem:} Suppose $f$ is defined on a disk D that contains the point $(a,b)$. If the function $f_{xy}$ and $f_{yx}$ are both continuous on D. Then
+			\begin{center}
+			\Large$f_{xy}(a,b)=f_{yx}(a,b)$
+			\end{center}
+		\end{itemize}
+	\section{Tangent Planes and Linear Approximations}
+		\begin{itemize}\addtolength{\leftskip}{2em}
+			\item Suppose $f$ has continuous partial derivatives. An equation of the\textbf{ tangent plane} to the surface is
+			\subitem \Large$z=z_0=f_x(x_0,y_0)(x-x_0)+f_y(x_0,y_0)(y-y_0)$
+			\large\item \textbf{Linearization} of $f$ at $(a,b)$:
+				\subitem\Large $L(x,y)=f(a,b)+f_x(a,b)(x-a)+f_y(a,b)(y-b)$
+			\large\item If $z=f(x,y)$ then $f$ is \textbf{differentiable} at $(a,b)$ if $\Delta z$ can be expressed in the form 
+			\begin{center}
+			$\Delta z=f_x(a,b)\Delta x+f_y(a,b)\Delta y+\epsilon_1\Delta x+\epsilon_2\Delta y$ where $\epsilon_1$ and $\epsilon_2 \rightarrow 0 as (\Delta x,\Delta y)\rightarrow (0,0)$.
+			\end{center}
+			\item \textbf{Theorem:} If the partial derivatives $f_x$ and $f_y$ exist near $(a,b)$ and are continuous at $(a,b)$, then $f$ is differentiable at $(a,b)$.
+			\item The \textbf{differential} of $y=f(x)$ is defined as $dy=f'(x)\, dx$
+			\item For a differentiable  function of two variables, $z=f(x,y)$, we define the \textbf{differentials} $dx$ and $dy$. The \textbf{total differential} $dz$ can be defined by:
+				\begin{center}
+				$dz=f_x(x,y)dx+f_y(x,y)dy=\frac{\partial z}{\partial x}dx+\frac{\partial z}{\partial y}dy$
+				\end{center}
+		\end{itemize}
+	\section{The Chain Rule}
+		\begin{itemize}\addtolength{\leftskip}{2em}
+			\item \textbf{The Chain Rule (Case 1)}: Suppose that $z=f(x,y)$ is a differentiable function of x and y, where $x=g(t)$ and $y=h(t)$ are both differentiable function of $t$. Then z is a differentiable function of t Then
+			\begin{center}
+				\huge$\frac{dz}{dt}=\frac{\partial f}{\partial x}\frac{\partial x}{dt}+\frac{\partial f}{\partial y}\frac{dy}{dt}$
+			\end{center}
+			 
+			\item \textbf{The Chain Rule (Case 2)}: Suppose that $z=f(x,y)$ is a differentiable function of x and y, where $x=g(t)$ and $y=h(t)$ are both differentiable function of $t$. Then z is a differentiable function of s and t. Then
+			\begin{center}
+				\huge$\frac{\partial z}{\partial s}=\frac{\partial z}{\partial x}\frac{\partial x}{\partial s}+\frac{\partial z}{\partial y}\frac{\partial y}{\partial s}$
+			\end{center}
+			
+			\item \textbf{The Chain Rule (General Version)}: Suppose that $u$ is a differentiable function of $n$ variables $x_1,x_2,...,x_n$ and each $x_j$ is a differentiable function of the $m$ variables $t_1,t_2,...,t_m$. Then $u$ is a function of $t_1,t_2,...,t_m$ and
+			\begin{center}
+				\huge$\frac{\partial u}{\partial t_i}=\frac{\partial u}{\partial x_1}\frac{\partial x_1}{\partial t_i}+\frac{\partial u}{\partial  x_2}\frac{\partial x_2}{\partial t_i}+\;...\;+\frac{\partial u}{\partial x_n}\frac{\partial x_n}{\partial t_i}$
+			\end{center}
+			\item \textbf{Implicit Function Theorem:} 
+			\subitem \huge $\frac{dy}{dx}=\;-\frac{\;\frac{\partial F}{\partial x}\;}{\;\frac{\partial F}{\partial y}\;}=\;-\frac{F_x}{F_y}$
+		\end{itemize}
+	\section{Directional Derivatives and the Gradient Vector}
+		\begin{itemize}\addtolength{\leftskip}{2em}
+			\item The \textbf{directional derivative} of $f$ at $(x_0,y_0)$ in the direction of a unit vector $\textbf{u}=\langle a,b \rangle$ is
+			\begin{center}
+			$D_{\textbf{u}}f(x_0,y_0)=\lim\limits_{h\rightarrow 0}\frac{f(x_0+ha,y_0+hb)-f(x_0,y_0)}{h}\quad\quad$ if this limit exists
+			\end{center}
+			\item \textbf{Theorem: }If $f$ is differentiable function of x and y, then f has a directional derivative in the direction of any vector $\textbf{u}=\langle a,b \rangle$ and
+			\begin{center}
+			$D_{\textbf{u}}f(x,y)=f_x(x,y)a+f_y(x,y)b$
+			\end{center}
+			\item \textbf{Definition:} If f is a function of two variables x and y, then the \textbf{gradient} of f is the vector function $\nabla f$ defined by
+			\begin{center}
+			$\nabla f(x,y)=\langle f_x(x,y),f_y(x,y) \rangle=\frac{\partial f}{\partial x}\textbf{i}+\frac{\partial f}{\partial y}\textbf{j}$
+			\end{center}
+			\item\textbf{Directional derivative} of a differentiable function:
+			\subsubitem $D_{\textbf{u}}f(x,y)=\nabla f(x,y)\cdot \textbf{u}$
+			\item \textbf{Definition:} The \textbf{directional derivative} of $f$ at $(x_0,y_0,z_0)$ in the direction of a unit vector $\textbf{u}=\langle a,b,c \rangle $ is
+			\begin{center}
+			$D_{\textbf{u}}f(x_0,y_0,z_0)=\lim\limits_{h\rightarrow 0}\frac{f(x_0+ha,y_0+hb,z_0+hc)-f(x_0,y_0,z_0)}{h}\quad\quad$ if this limit exists
+			\end{center}
+			\item \textbf{Gradient Vector} of a function $f(x,y,z)$ can be defined
+			\Large\subsubitem $\nabla f=\langle f_x,f_y,f_z \rangle = \frac{\partial f}{\partial x}\textbf{i}+\frac{\partial f}{\partial y}\textbf{j}+\frac{\partial f}{\partial z}\textbf{k}$
+			\large\item\textbf{Directional derivative} of a differentiable function of three variables:
+			\subsubitem $D_{\textbf{u}}f(x,y,z)=\nabla f(x,y,z)\cdot \textbf{u}$
+			\item \textbf{Theorem:} Suppose f is a differentiable function of two or three variables. The maximum value of the directional derivatives $D_Uf(x)$ is $|\nabla f(x)|$ and it occurs when \textbf{u} has the same direction as the gradient vector $\nabla f(x)$.
+			\item \textbf{Tangent Plane to the level surface:} 
+			\begin{center}
+			$F_x(x_0,y_0,z_0)(x-x_0)+F_y(x_0,y_0,z_0)(y-y_0)+F_z(x_0,y_0,z_0)(z-z_0)=0$
+			\end{center}
+		\end{itemize}
+	\section{Maximum and Minimum Values}
+		\begin{itemize}\addtolength{\leftskip}{2em}
+			\item \textbf{Definition:} A function of two variables has a \textbf{local maximum} at $(a,b)$ if $f(x,y)\le f(a,b)$ when $(x,y)$ is near $(a,b)$. The number $f(a,b)$ is called a \textbf{local maximum value}. If $f(x,y)\ge f(a,b)$ when $(x,y)$ is near $(a,b)$, then $f$ has a \textbf{local maximum value} at $(a,b)$ and $f(a,b)$ is a \textbf{local minimum value}.
+			\item If the inequalities above hold for \textit{all} points $(x,y)$ in the domain of $f$, then $f$ has an \textbf{absolute maximum or minimum} at $(a,b)$.
+			\textbf{Theorem: }If $f$ has a local maximum or minimum at $(a,b)$ and the first-order partial derivative of f exist there, then $f_x(a,b)=0$ and $f_y(a,b)=0$. 
+			\item \textbf{Critical Point:} Point of f where $f_x=0$, $f_y=0$, or one of the partial derivatives does not exist. 
+			\item \textbf{Second Derivative Test: }Suppose the second partial derivatives of $f$ are continuous on a disk with center $(a,b)$, and suppose that $f_x(a,b)=0$ and $f_y(a,b)=0$ Let 
+			\begin{center}
+			$D=D(a,b)=f_{xx}(a,b)f_{yy}(a,b)-[f_{xy}(a,b)]^2$
+			\end{center}
+			\begin{itemize}\addtolength{\leftskip}{4em}
+			\item If $D>0$ and $f_{xx}(a,b)>0$, then $f(a,b)$ is a local minimum.
+			\item If $D>0$ and $f_{xx}(a,b)<0$, then $f(a,b)$ is a local maximum.
+			\item If $D<0$, then $f(a,b)$ is not a local maximum or minimum. (\textbf{Saddle Point})
+			\end{itemize}
+			\item \textbf{Extreme Value Theorem for Functions of Two Variables:} If $f$ is continuous on a closed, bounded set $D$ in $\mathbb{R}^2$, then $f$ attains an absolute maximum value $f(x_1,y_1)$ and an absolute minimum value $f(x_2,y_2)$ at some points $(x_1,y_1)$ and $(x_2,y_2)$ in D.
+			\item \textbf{To find the absolute max and min values} of a continuous function $f$ on a closed, bounded set D:
+			\begin{enumerate}\addtolength{\leftskip}{4em}
+				\item Find the values of $f$ at the critical points of $f$ in $D$.
+				\item Find the extreme values of $f$ on the boundary of $D$.
+				\item The largest of the values from steps 1 and 2 is the absolute maximum value; the smallest of these values is the absolute minimum value.
+			\end{enumerate}
+		\end{itemize}
+	\section{Lagrange Multipliers}
+		\begin{itemize}\addtolength{\leftskip}{2em}
+			\item \textbf{Definition: }$\nabla f(x_0,y_0,z_0) = \lambda \nabla g(x_0,y_0,z_0)\quad\quad$ where $\lambda$ is called a \textbf{Lagrange multiplier}.
+			\item \textbf{Method of Lagrange Multipliers:} To find the max and min values of $f(x,y,z)$ subject to the constraint $g(x,y,z)=k$ [assuming that these extreme values exist and $\nabla g\ne 0$ on the surface $g(x,y,z)=k$]:
+			\begin{enumerate}\addtolength{\leftskip}{4em}
+				\item Find all values of $x,y,z$ and $\lambda$ such that 
+				\subsubitem$\nabla f(x,y,z)=\lambda \nabla g(x,y,z)\quad\quad\quad g(x,y,z)=k$
+				\item Evaluate $f$ at all the points $(x,y,z)$ that result from step (1). The largest of these values is the \textbf{maximum} value of $f$; the smallest is the \textbf{minimum} value of $f$
+			\end{enumerate} 
+		\end{itemize}
+\chapter{Multiple Integrals}
+	\section{Double integrals over Rectangles}
+		\begin{itemize}\addtolength{\leftskip}{2em}
+			\item \textbf{Definition:} The \textbf{double integral} of $f$ over the rectangle R is 
+			\begin{center}
+			$\iint\limits_{R} f(x,y)\,dA$ 
+			\end{center}
+			\item The \textbf{volume} $V$ of the solid that lies above the rectangle $R$ and below the surface $z=f(x,y)$ is 
+			\begin{center}
+				$V=\iint\limits_{R}f(x,y)\,dA$
+			\end{center}
+		\end{itemize}
+	\section{Iterated Integrals}
+		\begin{itemize}\addtolength{\leftskip}{2em}
+			\item \textbf{Fubini's Theorem:} If $f$ is continuous on the rectangle $R={(x,y)\,|\, a\le x \le b,\, c\le y \le d}$, then
+			\begin{center}
+			$\iint\limits_{R}f(x,y)\,dA=\int\limits_{a}^{b}\int\limits_{c}^{d}f(x,y)\, dy\,dx=\int\limits_{c}^{d}\int\limits_{a}^{b}f(x,y)\, dx\,dy$
+			\end{center}
+			More generally, this is true if we assume that $f$ is bounded on R, $f$ is discontinuous only on a finite number of smooth curves, and the iterated integrals exit.
+		\end{itemize}
+	\section{Double Integrals over General Regions}
+		\begin{itemize}\addtolength{\leftskip}{2em}
+			\item If $F$ is integrable over $R$, then we define the \textbf{double integral of f over D} by
+			\begin{center}
+			$\iint\limits_{D}f(x,y)\,dA=\iint\limits_{R}F(x,y)\,dA\quad\quad$ 
+			\end{center}
+			where $F(x,y)=f(x,y)$ if $(x,y)$ is in D and $F(x,y)=0$0 if $(x,y)$ is in $R$ but not in $D$
+			\item If $f$ is continuous on a type I region $D$ such that $D={(x,y)\,|\,a \le x \le b, g_1(x)\le y \le g_2(x)}$
+			\subsubitem then $\iint\limits_{D}f(x,y)\,dA=\int\limits_{a}^{b}\int\limits_{g_1(x)}^{g_2(x)}f(x,y)\,dy\,dx$
+		\end{itemize}
+	\section{Double Integrals in Polar Coordinates}
+		\begin{itemize}\addtolength{\leftskip}{2em}
+			\item \textbf{Polar Coordinates:}
+				\begin{itemize}\addtolength{\leftskip}{4em}
+				\item Functions of the form $f(r,\theta)$
+				\item $r^2=x^2+y^2$
+				\item $x=r\,cos\,\theta$
+				\item $y=r\,sin\,\theta$
+				\end{itemize}
+			\item \textbf{Change to Polar Coordinates in a Double Integrals}: If $f$ is continuous on a polar rectangle $R$ given by $0\le a \le r \le b$, $\alpha \le \theta \le \beta $, where $0\le \beta - \alpha \le 2\pi$, then 
+			\begin{center}
+				$\iint\limits_{R}f(x,y)\,dA=\int\limits_{\alpha}^{\beta}\int\limits_{a}^{b}f(r\,cos\,\theta,r\,sin\,\theta)\,r\,dr\,d\theta$
+			\end{center}
+			\item  If $f$ is continuous on a polar region of the form $D={(r,\theta)\,|\,\alpha \le \theta \le \beta, h_1(\theta)\le r \le h_2(\theta)}$
+			\subsubitem $\iint\limits_{D}^{}\,dA=\int\limits_{\alpha}^{\beta}\int\limits_{h_1(\theta)}^{h_2(\theta)}f(r\,cos\,\theta,r\,sin\,\theta)\,r\,dr\,d\theta$
+		\end{itemize}
+	\section{Applications of Double Integrals}
+		\begin{itemize}\addtolength{\leftskip}{2em}
+			\item \textbf{Density} at a point $(x,y)$ in $D$ is given by $\rho(x,y)$, where $\rho$ is a continuous function on $D$. This means that $\rho(x,y)=\lim \frac{\Delta m}{\Delta A}$
+			\item \textbf{Mass} with density $\rho$: $m=\iint\limits_{D}\,\rho(x,y)\,dA$
+			\item \textbf{Moment} about the $x-axis$: $M_x=\iint\limits_{D}^{}y\,\rho(x,y)\,dA$
+			\item \textbf{Moment} about the $y-axis$: $M_y=\iint\limits_{D}^{}x\,\rho(x,y)\,dA$
+			\item The coordinates $(\bar{x},\bar{y})$ of the \textbf{center of mass} of a lamina occupying the region D and having density function $\rho(x,y)$ are 
+			\begin{center}
+				$\bar{x}=\frac{M_y}{m}=\frac{1}{m}\iint\limits_{D}x\rho(x,y)\,dA\quad\quad\quad\bar{y}=\frac{M_x}{m}=\frac{1}{m}\iint\limits_{D}y\rho(x,y)\,dA$
+			\end{center}
+			\begin{center}
+			\textbf{where the mass m is given by}
+			\end{center}
+			\begin{center}
+			$m=\iint\limits_{D}\rho(x,y)\,dA$
+			\end{center}
+			\item \textbf{Moment of Inertia} of the lamina \textbf{about the x-axis}:
+				$I_x=\iint\limits_{D}y^2\rho(x,y)\,dA$
+			\item \textbf{Moment of Inertia} of the lamina \textbf{about the y-axis}:
+				$I_y=\iint\limits_{D}x^2\rho(x,y)\,dA$
+			\item \textbf{Moment of inertia} of the lamina \textbf{about the origin}:
+				$I_0=\iint\limits_{D}(x^2+y^2)\rho(x,y)\,dA$
+		\end{itemize}
+	\section{Surface Area}
+		\begin{itemize}\addtolength{\leftskip}{2em}
+			\item The area of the surface with equation $z=f(x,y)$, $(x,y)\in D$, where $f_x$ and $f_y$ are continuous is,
+			\begin{center}
+				\Large$A(S)=\iint\limits_{D}^{}\sqrt{[f_x(x,y)]^2+[f_y(x,y)]^2+1}\,dA$
+			\end{center}
+			\begin{center}
+			or using partial derivative notation...
+			\end{center}
+			\begin{center}
+			\Large$A(s)=\iint\limits_{D}\sqrt{1+(\frac{\partial z}{\partial x})^2+(\frac{\partial z}{\partial x})^2}\;dA$
+			\end{center}
+		\end{itemize}
+	\section{Triple Integrals}
+		\begin{itemize}\addtolength{\leftskip}{2em}
+			\item \textbf{Definition}: The \textbf{triple integral} of $f$ over the box $B$ is 
+			\begin{center}
+				\Large$\iiint\limits_{B}f(x,y,z)\,dV$
+			\end{center}
+			\large\item \textbf{Fubini's Theorem for Triple Integrals:} If f is continuous on the rectangular box \newline$B=[a,b]\times [c,d]\times [r,s]$, then 
+			\begin{center}
+				\Large$\iiint f(x,y,z)\, dV=\int\limits_{r}^{s}\int\limits_{c}^{d}\int\limits_{a}^{b}f(x,y,z)\, dx\, dy\, dz$
+			\end{center}
+			\large\item \textbf{Triple Integral over a General Region E}.\newline If $E={(x,y,z)\,|\, a\le x \le b, g_1(x) \le y \le g_2(x), u_1(x,y) \le z \le u_2(x,y)}$, then
+			\begin{center}
+				\Large$\iiint\limits_{E}f(x,y,z)\,dV=\int\limits_{a}^{b}\int\limits_{g_1(x)}^{g_2(x)}\int\limits_{u_1(x,y)}^{u_2(x,y)}f(x,y,z)\,dz\,dy\,dx$
+			\end{center}
+		\end{itemize}
+	\section{Triple Integrals in Cylindrical Coordinates}
+		\begin{itemize}\addtolength{\leftskip}{2em}
+			\item \textbf{Function Format:} $f(r,\theta,z)$.
+			\item \textbf{Cylindrical to Rectangular Coordinates:}
+			\begin{center}
+			$x=r\,cos\,\theta\quad\quad y=r\,sin\,\theta\quad\quad z=z$
+			\end{center}
+			\item \textbf{Rectangular to Cylindrical Coordinates:}
+			\begin{center}
+			\item $r^2=x^2+y^2\quad\quad tan\,\theta = \frac{y}{x}\quad\quad z=z$
+			\end{center}
+			\item \textbf{Triple Integral in Cylindrical Coordinates:} \newline If $E={(x,y,z)\,|\, (x,y)\in D,u_1(x,y)\le z \le u_2(x,y)}$, then
+			\begin{center}
+			$\iiint\limits_{E}f(x,y,z)\,dV=\int\limits_{\alpha}^{\beta}\int\limits_{h_1(\theta)}^{h_2(\theta)}\int\limits_{u_1}^{u_2}f(r\,cos\,\theta,r\,sin\,\theta,z)\,r\,dz\,dr\,d\theta$
+			\end{center}			
+			\begin{center}
+			\small Notice the single $r$ inserted near the end of the equation.\newline This is the \textit{jacobian} of our transformation into polar coordinates. (covered in 15.10)
+			\end{center}
+		\end{itemize}
+		\newpage
+	\section{Triple Integrals in Spherical Coordinates}
+		\begin{itemize}\addtolength{\leftskip}{2em}
+			\item \textbf{Function Format:} $f(\rho,\theta,\phi)$
+			\item \textbf{Spherical to Rectangular Coordinates:}
+			\begin{center}
+			$x=\rho\,sin\,\phi\,cos\,\theta\quad\quad y=\rho\,sin\,\phi\,sin\,\theta\quad\quad z=\rho\,cos\,\theta$
+			\end{center}
+			\item\textbf{Rectangular to Spherical:}
+			\begin{center}
+			$\rho = x^2+y^2+z^2$
+			\end{center}
+			\item\textbf{Triple Integration in Spherical Coordinates:} \newline If E is the spherical wedge given by $E={(\rho,\theta,\phi)\,|\, a \le \rho \le b,\alpha \le \theta \le \beta, c \le \phi \le d}$, then
+			\begin{center}
+			\Large$\iiint\limits_{E}f(x,y,z)\,dV=\int\limits_{c}^{d}\int\limits_{\alpha}^{\beta}\int\limits_{a}^{b}f(\rho\,sin\,\phi\,cos\,\theta,\rho\,sin\,\phi\,sin\,\theta,\rho\,cos\,\phi)\,\rho^2sin\,\phi\,d\rho\,d\theta\,d\phi$
+			\end{center}
+		\end{itemize}
+	\section{Change of Variables in Multiple Integrals}
+		\begin{itemize}\addtolength{\leftskip}{2em}
+			\item \textbf{Definition: }The \textbf{Jacobian} of the transformation $T$ given by $x=g(u,v)$ and $y=h(u,v)$ is
+			\begin{center}
+			\Large $\frac{\partial (x,y)}{\partial (u,v)}\begin{vmatrix}
+			\frac{\partial x}{\partial u} && \frac{\partial x}{\partial v}\\
+			 \\
+			\frac{\partial y}{\partial u} && \frac{\partial y}{\partial v}
+			\end{vmatrix}=\frac{\partial x}{\partial u}\frac{\partial y}{\partial v}-\frac{\partial x}{\partial v}\frac{\partial y}{\partial u}$
+			\end{center}
+			\item \textbf{Charge of Variables in a Double Integral:} Suppose that T is a $C^1$ transformation whose Jacobian is nonzero and that maps a region S in the uv-plane onto a region R in the xy-plane. Suppose that f is continuous on R and that R and S are type I or type II plane regions. Suppose also that T is one-to-one, except perhaps on the boundary of S. Then 
+			\begin{center}
+			$\iint\limits_{R}f(x,y)\,dA=\iint\limits_{S}f(x(u,v),y(u,v))|\frac{\partial (x,y)}{\partial (u,v)}|\,du\,dv$
+			\end{center}
+			\item \textbf{Jacobian} for a transformation in space, where $x=g(u,v,w)\quad\quad y=h(u,v,w)\quad\quad z=k(u,v,w)$ 
+			\begin{center}
+			is the following $3\times 3$ determinant: \Large$\quad \frac{\partial (x,y,z)}{\partial (u,v,w)}=\begin{vmatrix}
+			\frac{\partial x}{\partial u} && \frac{\partial x}{\partial v} && \frac{\partial x}{\partial w}\\
+			\\
+			\frac{\partial y}{\partial u} && \frac{\partial y}{\partial v} && \frac{\partial y}{\partial w}\\
+			\\
+			\frac{\partial z}{\partial u} && \frac{\partial z}{\partial v} && \frac{\partial z}{\partial w}\\
+			\end{vmatrix}$
+			\end{center}
+			\item Similar to how we do double integrals with their Jacobians, we can use the above Jacobian when finding a triple integral after a transformation $T$.
+		\end{itemize}
+\chapter{Vector Calculus}
+	\section{Vector Fields}
+		\begin{itemize}\addtolength{\leftskip}{2em}
+			\item \textbf{Definition:} Let D be a set in $\mathbb{R}^2$ (a plane region). A \textbf{vector field} on $\mathbb{R}^2$ is a function \textbf{F} that assigns to each point $(x,y)$ in D a two-dimensional vector \textbf{F}(x,y)
+			\item \textbf{Definition:} Let E be a subset $\mathbb{R}^3$. A \textbf{vector field} on $\mathbb{R}^3$ is a function \textbf{F} that assigns to each point $(x,y,z)$ in E three-dimensional vector \textbf{F}$(x,y,z)$
+		\end{itemize}
+	\section{Line Integrals}
+		\begin{itemize}\addtolength{\leftskip}{2em}
+			\item \textbf{Definition:} If $f$ is defined on a smooth curve $C$ given by parametric equations, then the \textbf{line integral of f along C} is 
+			\begin{center}
+				\Large$\int\limits_{C}^{}f(x,y)\, ds=\int\limits_{a}^{b}f(x(t),y(t))\sqrt{(\frac{dx}{dt})^2+(\frac{dy}{dt})^2}\,dt$
+			\end{center}
+			\item \textbf{Line Integral with respect to Arc Length:}
+			\begin{center}
+			\Large$\int\limits_{C}^{}f(x,y)\,dx=\int\limits_{a}^{b}f(x(t),y(t))\,x'(t)\,dt$
+			\end{center}
+			\begin{center}
+			\Large$\int\limits_{C}^{}f(x,y)\,dy=\int\limits_{a}^{b}f(x(t),y(t))\,y'(t)\,dt$
+			\end{center}
+			\item\textbf{Definition:} Let \textbf{F} be a continuous vector field defined on a smooth curve C given by a vector function $\textbf{r}(t),\, a\le t\le b$. Then the \textbf{line integral of F along C} is 
+			\begin{center}
+			$\int\limits_{C}^{}\textbf{F}\cdot d\textbf{r}=\int\limits_{a}^{b}\textbf{F}(\textbf{r}(t))\cdot \textbf{r}'(t)\,dt=\int\limits_{C}^{}\textbf{F}\cdot \textbf{T}\,ds$
+			\end{center}
+		\end{itemize}
+	\section{The Fundamental Theorem for line Integrals}
+		\begin{itemize}\addtolength{\leftskip}{2em}
+			\item \textbf{Theorem:} Let C be a smooth curve given by the vector function $\textbf{r}(t)$, $a\le t \le b$, Let $f$ be a differentiable function of two or three variables whose gradient vector $\nabla f$ is continuous on C. Then
+			\begin{center}
+			$\int\limits_{C}^{}\nabla\cdot d\textbf{r}=f(\textbf{r}(b))-f(\textbf{r}(a))$
+			\end{center}
+			\item \textbf{Theorem:} $\int\limits_{C}^{}\textbf{F}\cdot d\textbf{r}$ is independent of path in $D$ if and only if $\int\limits_{C}^{}\textbf{F}\cdot d\textbf{r}=0$ for every closed path C in D.
+			\item \textbf{Theorem:} Suppose \textbf{F} is a vector field that is continuous on an open connected region D. If $\int\limits_{C}^{}\textbf{F}\cdot d\textbf{r}$ is independent of path in D, then \textbf{F} is a conservative vector field on D;  that is, there exists a function $f$ such that $\nabla f=\textbf{F}$
+		\end{itemize}
+	\section{Green's Theorem}
+		\begin{itemize}\addtolength{\leftskip}{2em}
+			\item \textbf{Green's Theorem:} Let C be a positively oriented, piecewise-smooth, simple closed curve in the plane and let D be a region bounded by C. If $P$ and $Q$ have continuous partial derivatives on an open region that contains D, then
+			\begin{center}
+				\huge$\int\limits_{C}^{}P\,dx+Q\,dy=\iint\limits_{D}(\frac{\partial Q}{\partial x}-\frac{\partial P}{\partial y})\,dA$
+			\end{center}
+		\end{itemize}
+	%Bibliography
+	\begin{center}
+
+	\vspace{45em}
+
+	\textbf{\huge{Bibliography}}
+	\end{center}
+	\textbf{Book used:} Calculus Early Transcendentals 7th Edition\newline
+	\textbf{Professor:} Notes from Dr. Dan Zacharia's Summer Session I 2012 Calculus III course
+\end{document}

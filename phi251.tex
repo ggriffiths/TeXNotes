@@ -1,0 +1,270 @@
+%Include things
+\documentclass{report}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage[left=0.5in,top=1.0in,right=0.5in,bottom=1.0in]{geometry} % Document margins
+\usepackage{amsmath}
+ \usepackage[noindentafter]{titlesec}
+\titleformat{\chapter}
+  {\normalfont\huge\bfseries}{\noindent Chapter \thechapter:}{0.5em}{}
+% this alters "before" spacing (the second length argument) to 0
+\titlespacing*{\chapter}{0pt}{0pt}{0pt}
+%My own macros
+
+
+\titleformat{\section}
+  {\normalfont\Large\bfseries}{\noindent Lesson \thesection:}{0.5em}{}
+
+\title{PHI251 - Logic}
+\author{Grant Griffiths}
+\date{Spring 2012}
+\begin{document}
+   \maketitle
+   \tableofcontents
+
+
+\chapter{Fundamental Concepts and Truth-Functional Analysis}
+	\section{Introduction}
+		\begin{itemize}\addtolength{\leftskip}{2em}
+			\item \textbf{Argument}: When reasons are given to justify a belief
+			\item\textbf{ Argument Indicator Words}: indicate that an conclusion is being presented
+			\begin{itemize}\addtolength{\leftskip}{4em}
+				\item So 
+				\item Hence
+				\item Thus 
+				\item Therefore
+				\item It must be that
+			\end{itemize}
+			\item\textbf{Premise Indicator Words}: indicate that a premise is being presented
+			\begin{itemize}\addtolength{\leftskip}{4em}
+				\item For 
+				\item Since
+				\item Because
+				\item Due to the fact that
+			\end{itemize}
+			\item \textbf{Validity}
+			\begin{itemize}\addtolength{\leftskip}{4em}
+				\item In a valid argument, if the premises were all true,  the conclusion would also be true
+				\item In a valid argument, it is not possible for the conclusion to be false when all the premises are true
+			\end{itemize}
+			\item \textbf{Invalidity}
+			\begin{itemize}\addtolength{\leftskip}{4em}
+				\item When the premises are true and the conclusion is false. 
+				\item When an argument's premises do not truly prove it's conclusion.
+			\end{itemize}
+			\item \textbf{Soundness}: A sound argument is an argument with both of the following features:
+			\begin{itemize}\addtolength{\leftskip}{4em}
+				\item It is valid
+				\item All of its premises are true
+			\end{itemize}
+			\item \textbf{Validity and Consistency}
+			\begin{itemize}\addtolength{\leftskip}{4em}
+				\item Any argument is valid if and only if it would be inconsistent to assert all of it's premises but deny it's conclusion.
+			\end{itemize}
+			\item \textbf{Considering the possibilities}
+			\begin{itemize}\addtolength{\leftskip}{4em}
+				\item To establish that an argument is valid , it seems that we must somehow show that no possible situation exists in which the premises are true with the conclusion false.
+				\item Need just one possible situation to show invalidity
+			\end{itemize}
+		\end{itemize}
+		
+	\section{Truth-Functional Representation}
+	\begin{itemize}\addtolength{\leftskip}{2em}
+	
+		\item \textbf{Conjunction}
+		\begin{itemize}\addtolength{\leftskip}{4em}
+			\item First conjunct, Conjunct, Second Conjunct
+			\item $A\wedge B$ = AND
+		\end{itemize}
+		
+		\item \textbf{Disjunction}
+		\begin{itemize}\addtolength{\leftskip}{4em}
+			\item First Disjunct, Disjunct, Second Disjunct
+			\item $A\vee B$ = OR
+		\end{itemize}
+		
+		\item\textbf{Formulas}
+		\begin{itemize}\addtolength{\leftskip}{4em}
+			\item We use formulas to represent sentences
+			\item if P is any formula, then so is ~P
+			\item if P and Q are formulas, then $P\wedge Q$ is a formula
+			\item if P and Q are any formulas, then $P\vee Q$ is a formula
+		\end{itemize}
+			
+		\item\textbf{Advantages of Formulas}
+		\begin{itemize}\addtolength{\leftskip}{4em}
+			\item Formulas can be very complex
+			\item They can express complex claims clearly and compactly
+			\item English sentences can be long
+		\end{itemize}
+	
+		\item\textbf{Major connective}
+		\begin{itemize}\addtolength{\leftskip}{4em}
+			\item The logical connector used last in the process of constructing the formula out of its parts
+		\end{itemize}
+		
+		
+		\item\textbf{Sentence Forms}
+		\begin{itemize}\addtolength{\leftskip}{4em}
+			\item Patterns or structural frameworks, for sentences
+			\item Look like formulas
+		\end{itemize}
+	\end{itemize}
+			
+	\section{Truth-Functional Analysis}
+		\addtolength{\leftskip}{4em}
+		\bgroup
+		\def\arraystretch{1.5}%
+		\small\begin{tabular}{ | l | p{7cm} | p{7cm} |}
+			
+			\hline
+			  & \textbf{Shown by Considering Every Possible Case }& \textbf{Shown by Example}\\
+			\hline
+			\textbf{Argument} &
+			\textbf{Valid}: In every possible case, if premises are true, conclusion is also true. &
+			\textbf{Invalid}: In at least one possible case, premises are true, conclusion is false.\\
+			
+			\hline
+			\textbf{Set of Sentences} &
+			\textbf{Inconsistent}: In every possible case, at least one is false. & 
+			\textbf{Consistent}: In at least one possible case, all are true\\
+			
+			\hline
+			\textbf{Pair of Sentences} & 
+			\textbf{Equivalent}: In every possible case, they have the same truth-value. & \textbf{Not equivalent}: In at least one possible case, they have different truth-values. \\
+			
+			\hline
+			\textbf{Sentence} &
+			\textbf{Tautologous}: In every possible case, true \newline
+			\textbf{Contradictory}: In every possible case, false. & 
+			\textbf{Contingent}: True in at least one possible case and false in at least one possible case\\
+			\hline
+		\end{tabular}
+		\egroup
+	\section{Conditionals}
+		\begin{itemize}\addtolength{\leftskip}{4em}
+			\item False ONLY when the antecedent is true and the consequent is false.
+			\item For this outline, I've represented false as 0 and true as 1.
+		\end{itemize}
+		
+	\section{Truth Tables}
+	\begin{itemize}\addtolength{\leftskip}{2em}
+	\item Conjunction (AND)\newline\newline
+ 			\bgroup
+			\def\arraystretch{1.5}%
+			\small\begin{tabular}{ | l | l | p{1.25cm} |}
+				
+				\hline
+				\textbf{P}& 
+				\textbf{Q}&
+				$\mathbf{P\wedge Q}$\\
+				\hline
+	        	
+	        	0& 
+				0&
+				0\\
+				\hline
+				
+	        	0& 
+				1&
+				0\\
+				\hline
+				
+	        	1& 
+				0&
+				0\\
+				\hline
+				
+	        	1& 
+				1&
+				1\\
+				\hline
+			\end{tabular}
+			\egroup
+	\item Disjunction (OR)\newline\newline
+ 			\bgroup
+			\def\arraystretch{1.5}%
+			\small\begin{tabular}{ | l | l | p{1.25cm} |}
+				
+				\hline
+				\textbf{P}& 
+				\textbf{Q}&
+				$\mathbf{P\vee Q}$\\
+				\hline
+	        	
+	        	0& 
+				0&
+				0\\
+				\hline
+				
+	        	0& 
+				1&
+				1\\
+				\hline
+				
+	        	1& 
+				0&
+				1\\
+				\hline
+				
+	        	1& 
+				1&
+				1\\
+				\hline
+			\end{tabular}
+			\egroup
+		\item Conditional (If/then)\newline\newline
+	 			\bgroup
+				\def\arraystretch{1.5}%
+				\small\begin{tabular}{ | l | l | p{1.25cm} |}
+					
+					\hline
+					\textbf{P}& 
+					\textbf{Q}&
+					$\mathbf{P\Rightarrow Q}$\\
+					\hline
+		        	
+		        	0& 
+					0&
+					1\\
+					\hline
+					
+		        	0& 
+					1&
+					1\\
+					\hline
+					
+		        	1& 
+					0&
+					0\\
+					\hline
+					
+		        	1& 
+					1&
+					1\\
+					\hline
+				\end{tabular}
+				\egroup
+	\end{itemize}
+\chapter{Derivations and Models}
+	\section{Inference Rules}
+	\section{Equivalence Rules}
+	\section{Conditional Proof and Indirect Proof}
+\chapter{Quantificational Logic}
+	\section{The Language}
+	\section{Derivations}
+	\section{Predicate Logic Truth-Trees}
+	\section{Unrestricted Quantification}
+	\section{English Arguments}
+	\section{Identity, Definite Descriptions, and Function Symbols}
+	\section{Quantifier Semantics}
+
+\newpage
+
+\begin{center}
+\textbf{\huge{Bibliography}}
+\end{center}
+\textbf{Book used:} Modern Formal Logic (Second Edition)\newline
+\textbf{Professor:} Notes from Dr. Mark Brown's Spring 2012 course
+
+\end{document}

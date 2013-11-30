@@ -1,0 +1,370 @@
+%Include things
+\documentclass{report}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+\usepackage{amssymb}
+\usepackage[left=0.5in,top=1.0in,right=0.5in,bottom=1.0in]{geometry} % Document margins
+\usepackage{amsmath}
+ \usepackage[noindentafter]{titlesec}
+\titleformat{\chapter}
+  {\normalfont\huge\bfseries}{\noindent Chapter \thechapter:}{0.5em}{}
+  \setcounter{chapter}{+5}
+% this alters "before" spacing (the second length argument) to 0
+\titlespacing*{\chapter}{0pt}{0pt}{0pt}
+%My own macros
+\newcommand{\Fin}{$f^{-1}$}
+\newcommand{\ddx}{$\frac{d}{dx}$}
+
+\titleformat{\section}
+  {\normalfont\Large\bfseries}{\noindent Lesson \thesection:}{0.5em}{}
+
+\title{\textbf{Notes from MAT296 - Calculus II}}
+\author{\textbf{Notetaker: }Grant Griffiths}
+\date{\textbf{Semester: }Spring 2012 - Syracuse University}
+\begin{document}
+   \maketitle
+   \tableofcontents 
+\chapter{Applications of Integration}
+	\section{Areas Between Curves}
+		\begin{itemize}\addtolength{\leftskip}{2em}
+			\item \textbf{Area between two curves:} \large$A=\int\limits_{a}^{b}|f(x)-g(x)|dx$
+		\end{itemize}
+	\section{Volumes}
+		\begin{itemize}\addtolength{\leftskip}{2em}
+			\item \textbf{Definition of Volume} Let S be a solid that lies between $x=a$ and $x=b$. If the cross-sectional area of S in the plan $P_x$, through x and perpendicular to the x-axis, is $A(x)$, where A is a continuous function, then the \textbf{volume} of S is 
+			\begin{center}
+			\large$V=\lim\limits_{n\rightarrow \infty}\sum\limits_{i=1}^{n}A(x_i^*)\Delta x=\int\limits_{a}^{b}A(x)dx$
+			\end{center}
+		\end{itemize}
+	\section{Volumes by Cylindrical Shells}
+		\begin{itemize}\addtolength{\leftskip}{2em}
+			\item The \textbf{volume} of a solid, obtained by \textbf{rotating about the y-axis} under the curve $f(x)$ is 
+				\begin{itemize}\addtolength{\leftskip}{4em}
+					\item \large$V=\int circumference * height * thickness$
+					\item \large$V=\int\limits_{a}^{b}2\pi xf(x)dx$   where $0\le a<b$
+				\end{itemize}	
+			\item The\textbf{ volume} of a solid, obtained by \textbf{rotating about the x-axis} under the curve $f(y)$ is 
+				\begin{itemize}\addtolength{\leftskip}{4em}
+					\item \large$V=\int circumference * height * thickness$
+					\item \large$V=\int\limits_{a}^{b}2\pi yf(y)dy$   where $0\le a<b$
+				\end{itemize}
+		\end{itemize}
+	\section{Work}
+		\begin{itemize}\addtolength{\leftskip}{2em}
+			\item \textbf{Work: }\large$W=Fd$
+			\item \textbf{Hooke's Law (Force on spring): \large$F=kx$}
+			\item \textbf{Work done pulling rope up:}
+			\begin{itemize}\addtolength{\leftskip}{2em}
+				\item \large$W=\int weight\;density * displacement * thickness$
+				\item \large$W=\int\limits_{a}^{b}kx\;dx$ where k is the weight density
+			\end{itemize}
+			\item \textbf{Work done in moving an object from a to b:} $W=\int\limits_{a}^{b}f(x)dx$
+		\end{itemize}
+\chapter{Techniques of Integration}
+	\section{Integration by Parts}
+		\begin{itemize}\addtolength{\leftskip}{2em}
+			\item \textbf{Formula: }\large$\int u\;dv=uv-\int v\;du$
+		\end{itemize}
+	\section{Trigonometric Integrals}
+		\begin{itemize}\addtolength{\leftskip}{2em}
+			\item \textbf{General Advice:} Memorize Trigonometric Identities and set yourself up for an easy substitution.
+			\item \textbf{Strategy for Evaluating \large$\int sin^mx\;cos^nx\;dx$}
+				\begin{itemize}\addtolength{\leftskip}{4em}
+					\item If the \textbf{power of cosine is odd}, save one cosine factor and use $cos^2x=1-sin^2x$ to express the remaining factors in terms of sine.
+					\item If the\textbf{ power of sine is odd}, save one sine factor and use $sin^2x=1-cos^2x$ to express the remaining factors in terms of cosine.
+					\item If the \textbf{powers of both sine and cosine are even}, use half angle identities
+					\begin{center}
+					$sin^2x=\frac{1}{2}(1-cos(2x))\quad\quad cos^2x=\frac{1}{2}(1+cos(2x))$
+					\end{center}
+					It is sometimes helpful to use the identity
+					\begin{center}
+					$sin(x)\;cos(x)=\frac{1}{2}sin(2x)$
+					\end{center}
+				\end{itemize} 
+			\item \textbf{Strategy for Evaluating $\int tan^mx\;sec^nx\;dx$}
+				\begin{itemize}\addtolength{\leftskip}{4em}
+					\item If the \textbf{power of secant is even}, save a factor of $sec^2x$ and use $sec^2x=1+tan^2x$ to express the remaining factors in terms of $tan\;x$
+					Then substitute $u=tan\;x$
+					\item If the \textbf{power of tangent is odd}, save a factor of $sec(x)\;tan(x)$ and use $tan^2x=sec^2x-1$ to express the remaining factors in terms of $sec\;x$
+					Then substitute $u=sec\;x$
+				\end{itemize}
+			\item \large$\int tan\,x\;dx=ln|sec\,x|+C$
+			\item \large$\int sec\,x\;dx=ln|sec\,x+tan\,x|+C$
+		\end{itemize}
+	\section{Trigonometric Substitution}
+		\begin{itemize}\addtolength{\leftskip}{2em}
+			\item Use the following table to match substitutions and identities depending on what expression you're trying to integrate.
+		\end{itemize}
+		\addtolength{\leftskip}{6em}
+			\textbf{Expression}\large$\quad\;\;$\textbf{Substitution}$\quad\quad\quad\quad$\textbf{Identity}\newline
+			\large$\sqrt{a^2-x^2}\quad\quad\quad x=a\,sin\,\theta\quad\quad\quad 1-sin^2\theta =cos^2\theta$\newline
+			\large$\sqrt{a^2+x^2}\quad\quad\quad x=a\,tan\,\theta\quad\quad\quad 1+tan^2\theta =sec^2\theta$\newline
+			\large$\sqrt{x^2-a^2}\quad\quad\quad x=a\,sec\,\theta\quad\quad\quad sec^2\theta - 1 =tan^2\theta$
+	\section{Integration of Rational Functions by Partial Fractions}
+		\begin{itemize}\addtolength{\leftskip}{2em}
+			\item Fractions can be broken down using coefficients.
+		\end{itemize}
+	\section{Strategy for Integration}
+		\begin{itemize}\addtolength{\leftskip}{2em}
+			\item Use all integration techniques we have learned so far. Use your judgement to decide which technique to use depending on what problem it is.
+			\item \textbf{Integration Formulas}
+			\begin{enumerate}\addtolength{\leftskip}{4em}
+				\item \large$\int x^n\;dx=\frac{x^{n+1}}{n+1}\quad (n\ne -1)$ 
+				\item \large$\int \frac{1}{x}=ln|x|$
+				\item \large$\int e^x\;dx=e^x$
+				\item \large$\int a^x\;dx=\frac{a^x}{ln\;a}$
+				\item \large$\int sin\,x\;dx=-cos\,x$
+				\item \large$\int cos\,x\;dx=sin\,x$
+				\item \large$\int sec^2x\;dx=tan\,x$
+				\item \large$\int sec\,x\;dx=ln|sec\,x+tan\,x|$
+				\item \large$\int tan\,x\;dx=ln|tan\,x|$\newline
+				\textbf{Note:} Integrals for hyperbolic trigonometric function, cosecant, and cotangent also exist
+			\end{enumerate}
+		\end{itemize}
+	\setcounter{section}{+7}
+	\section{Improper Integrals}
+		\begin{itemize}\addtolength{\leftskip}{2em}
+			\item \textbf{Formulas for finding infinite improper integrals:}
+			\begin{enumerate}\addtolength{\leftskip}{4em}
+				\item If $\int\limits_{a}^{b}f(x)\;dx$ exists for every number $t\ge a$, then
+				\begin{center}
+					\large$\int\limits_{a}^{\infty}f(x)\;dx=\lim\limits_{t\rightarrow \infty}\int\limits_{a}^{t}f(x)\;dx$
+				\end{center}
+				\item If $\int\limits_{a}^{b}f(x)\;dx$ exists for every number $t\ge a$, then
+				\begin{center}
+					\large$\int\limits_{-\infty}^{b}f(x)\;dx=\lim\limits_{t\rightarrow -\infty}\int\limits_{t}^{b}f(x)\;dx$
+				\end{center}
+			\end{enumerate}
+			\item \textbf{Formulas for finding improper integrals with discontinuous points:}
+			\begin{enumerate}\addtolength{\leftskip}{4em}
+				\item If $f$ is continuous on $[a,b)$, and is discontinuous at b, then
+				\begin{center}
+					\large$\int\limits_{a}^{b}f(x)\;dx=\lim\limits_{t\rightarrow b^-}\int\limits_{a}^{t}f(x)\;dx$
+				\end{center}
+				\item If $f$ is continuous on $(a,b]$, and is discontinuous at a, then
+				\begin{center}
+				\large	$\int\limits_{a}^{b}f(x)\;dx=\lim\limits_{t\rightarrow a^+}\int\limits_{t}^{a}f(x)\;dx$
+				\end{center}
+				
+			\end{enumerate}
+			\item \textbf{Convergent Improper Integral:} if the limit inside the improper exists
+			\item \textbf{Divergent Improper Integral:} if the limit inside the improper does not exist	
+			\item If \textbf{both of the bounds are infinite}, we can break it into the sum of two improper integrals
+			
+		\end{itemize}
+\chapter{Further Applications of Integration}
+	\section{Arc Length}
+		\begin{itemize}\addtolength{\leftskip}{2em}
+			\item \textbf{The Arc Length Formula: }If $f'$ is continuous on [a,b], then the length of the curve $y=f(x)$, $a\le x \le b$, is
+			\begin{center}
+		\large	$L=\int\limits_{a}^{b}\sqrt{1+f'(x)^2}\;dx$
+			\end{center}
+			\item Same idea but different variables for functions in terms of $y$
+		\end{itemize}
+	\section{Area of a Surface of Revolution}
+		\begin{itemize}\addtolength{\leftskip}{2em}
+			\item \textbf{Surface Area of Revolution:} $S=\int 2\pi x\;ds\quad$ where $ds$ is $\sqrt{1+f'(x)^2}dx$
+			\item Together, the \textbf{Formula For a Surface area of Revolution} is
+			\begin{center}
+			\large$S=\int\limits_{a}^{b}2\pi f(x)\,\sqrt{1+f'(x)^2}dx\quad\quad\quad$ or, in Leibniz notation,
+			$\quad\quad\quad S=\int\limits_{a}^{b}2\pi y\sqrt{1+(\frac{dy}{dx})^2}dx$
+			\end{center}
+		\end{itemize}
+\setcounter{chapter}{+9}
+\chapter{Parametric Equations and Polar Coords}
+	\setcounter{section}{+2}
+	\section{Polar Coordinates}
+		\begin{itemize}\addtolength{\leftskip}{2em}
+			\item \textbf{Converting from Polar coordinates to Cartesian coordinates and vice versa:}
+			\begin{enumerate}\addtolength{\leftskip}{4em}
+				\item $x=r\,cos\,\theta$
+				\item $y=r\,sin\,\theta$
+				\item $r^2=x^2+y^2$
+				\item $tan\,\theta=\frac{y}{x}$
+			\end{enumerate}
+			\textbf{Finding slopes of parametric curves: }
+			\begin{center}
+			\huge$\frac{dy}{dx}=\frac{\frac{dy}{d\theta}}{\frac{dx}{d\theta}}=\frac{\frac{dr}{d\theta}sin\,\theta+r\,cos\,\theta}{\frac{dr}{d\theta}cos\,\theta-r\,sin\,\theta}$
+			\end{center}
+		\end{itemize}
+	\section{Areas and Lengths in Polar Coordinates}
+		\begin{itemize}\addtolength{\leftskip}{2em}
+			\item \textbf{Formula for a polar area:} \large$A=\int\limits_{a}^{b}\frac{1}{2}r^2\,d\theta$
+			\item \textbf{Formula for length of a polar curve: }\large$L=\int\limits_{a}^{b}\sqrt{r^2+(\frac{dr}{d\theta})}\,d\theta$
+		\end{itemize}
+\chapter{Infinite Sequences and Series}
+	\section{Sequences}
+		\begin{itemize}\addtolength{\leftskip}{2em}
+			\item \textbf{Sequence} - a list of numbers written in definite order.
+			\item Sequences can have limits, both convergent and divergent.
+			\item The limit laws from section 2.3 hold for sequences.
+		\end{itemize}
+	\section{Series}
+		\begin{itemize}\addtolength{\leftskip}{2em}
+			\item \textbf{Infinite Series} (or just a \textbf{series}): $\sum\limits_{n=1}^{\infty}$
+			\item Given a series $\sum\limits_{n=1}^{\infty}a_n=a_1+a_2+a_3+...$, let $s_n$ denote its \textit{n}th partial sum:
+			\begin{center}
+			\large$s_n=\sum\limits_{i=1}^{n}a_i=a_1+a_2+...+a_n$
+			\end{center}
+			\item If the sequence $\{s_n\}$ is convergent and $\lim\limits_{n\rightarrow \infty}s_n$ exists, then $\sum a_n$ is a \textbf{convergent series}.
+			\item If the sequence  $\{s_n\}$ is divergent, then the series is called \textbf{divergent}.
+			\item The \textbf{geometric series}
+			\begin{center}
+			\large$\sum\limits_{n=1}^{\infty}ar^{n-1}=a+ar+ar^2+...$
+			\end{center}
+			\begin{center}
+			is convergent if $|r|<1$ and its sum is 
+			\end{center}
+			\begin{center}
+			\large$\sum\limits_{n=1}^{\infty}ar^{n-1}=\frac{a}{1-r}$
+			\end{center}
+			\begin{center}
+			if $|r|\ge 1$, the geometric series is divergent.
+			\end{center}
+			\item If the series $\sum\limits_{n=1}^{\infty}a_n$ is convergent, then $\lim\limits_{n\rightarrow \infty}a_n=0$
+			\item \textbf{Test for Divergence: }If $\lim\limits_{n\rightarrow \infty}a_n$ does not exists or $\lim\limits_{n\rightarrow \infty}a_n\ne 0$, then the series $\sum\limits_{n=1}^{\infty}a_n$ is divergent.
+			\item A series can be broken down into the sum or difference of two series. Constants can also be pulled out of the series.
+
+		\end{itemize}
+	\section{The Integral Test and Estimates of Sums}
+		\begin{itemize}\addtolength{\leftskip}{2em}
+			\item \textbf{The Integral Test:} Suppose $f$ is continuous, positive, decreasing function on $[1,\infty)$ and let $a_n=f(n)$. Then the series $\sum\limits_{n=1}^{\infty}a_n$ is convergent if and only if the improper integral $\int\limits_{1}^{\infty}f(X)dx$ is convergent. In other words:
+			\begin{center}
+			If $\int\limits_{1}^{\infty}f(x)dx$ is convergent, then $\sum\limits_{n=1}^{\infty}a_n$ is convergent.
+			\end{center}
+			\begin{center}
+			If $\int\limits_{1}^{\infty}f(x)dx$ is divergent, then $\sum\limits_{n=1}^{\infty}a_n$ is divergent.
+			\end{center}
+			\item The p-series $\sum\limits_{n=1}^{\infty}\frac{1}{n^p}$ is convergent if $p>1$ and divergent if $p\le 1$
+		\end{itemize}
+	\section{The Comparison Tests}
+		\begin{itemize}\addtolength{\leftskip}{2em}
+			\item \textbf{The Comparison Test:} Suppose that $\sum A_n$ and $\sum B_n$ are series with positive terms.\newline
+			\newline
+			$\sum b_n$ is convergent and $a_n\le b_n$ for all n, then $\sum a_n$ is also convergent.\newline
+			If $\sum b_n$ is divergent and $a_n\ge b_n$ for all n, then $\sum a_n$ is also divergent.
+			\item \textbf{The Limit Comparison Test:} Suppose that $\sum a_n$ and $\sum b_n$ are series with positive terms. If
+			\begin{center}
+			$\lim\limits_{n\rightarrow \infty}\frac{a_n}{b_n}=c$
+			\end{center}
+			\begin{center}
+			where c is a finite number and $c>0$, then either both series converge or both diverge.
+			\end{center}
+		\end{itemize}
+	\section{Alternating Series}
+		\begin{itemize}\addtolength{\leftskip}{2em}
+			\item \textbf{Alternating Series Test: }If the alternating series
+			\begin{center}
+			$\sum\limits_{n=1}^{\infty}(-1)^{n-1}b_n=b_1-b_2+b_3-b_4+b_5-b_6+...\quad\quad b_n>0$ 
+			\end{center}
+			\begin{center}
+			\textbf{satisfies}
+			\end{center}
+			\begin{enumerate}\addtolength{\leftskip}{17em}
+			\item $b_{n+1}\le b_n$ for all n
+			\item $\lim\limits_{n\rightarrow \infty}b_n=0$
+			\end{enumerate}
+			\begin{center}
+			\textbf{then the series is convergent.}
+			\end{center}
+		\end{itemize}
+	\section{Absolute Convergence and the Ratios and Roots Tests}
+		\begin{itemize}\addtolength{\leftskip}{2em}
+			\item \textbf{Definition:} A series $\sum a_n$ is called \textbf{absolutely convergent} if the series of absolute values $\sum |a_n|$ is convergent.
+			\item \textbf{Definition:} A series $\sum a_n$ is called \textbf{conditionally convergent} if the series of absolute values $\sum |a_n|$ is convergent.
+			\item \textbf{Theorem: }If a series $\sum a_n$ is absolutely convergent, then it is convergent.
+			\item \textbf{The Ratio Test}:
+			\begin{itemize}\addtolength{\leftskip}{4em}
+				\item If $\lim\limits_{n\leftarrow \infty}|\frac{a_{n+1}}{a_n}|=L<1$, then the series $\sum\limits_{n=1}^{\infty}a_n$ is absolutely convergent.
+				\item If $\lim\limits_{n\leftarrow \infty}|\frac{a_{n+1}}{a_n}|=L>1$ or $\lim\limits_{n\leftarrow \infty}|\frac{a_{n+1}}{a_n}|=\infty$, then the series $\sum\limits_{n=1}^{\infty}a_n$ is divergent.
+				\item If $\lim\limits_{n\rightarrow \infty}|\frac{a_{n+1}}{a_n}|=1$, the ratio test is inconclusive. No conclusion can be drawn.
+			\end{itemize}
+			\item \textbf{The Root Test}:
+			\begin{itemize}\addtolength{\leftskip}{4em}
+				\item If $\lim\limits_{n\leftarrow \infty}\sqrt[n]{|\frac{a_{n+1}}{a_n}|}=L<1$, then the series $\sum\limits_{n=1}^{\infty}a_n$ is absolutely convergent.
+				\item If $\lim\limits_{n\leftarrow \infty}\sqrt[n]{|\frac{a_{n+1}}{a_n}|}=L>1$ or $\lim\limits_{n\leftarrow \infty}\sqrt[n]{|\frac{a_{n+1}}{a_n}|}=\infty$, then the series $\sum\limits_{n=1}^{\infty}a_n$ is divergent.
+				\item If $\lim\limits_{n\rightarrow \infty}\sqrt[n]{|\frac{a_{n+1}}{a_n}|}=1$, the root test is inconclusive. No conclusion can be drawn.
+			\end{itemize}
+		\end{itemize}
+	\section{Strategy for Testing Series}
+		\begin{itemize}\addtolength{\leftskip}{2em}
+			\item Series can be tested in more than one way. However, there is usually an easiest way to test a given series. 
+			\item This is one way to prioritize the tests:
+			\begin{enumerate}\addtolength{\leftskip}{4em}
+				\item If the function inside the series appears to not go to zero, then try the \textbf{Test for Divergence}.
+				\item If it is a\textbf{ geometric series}, you can easily find out if it converges or not.
+				\item If the series has $(-1)^n$ in it, try the \textbf{Alternating Series Test}.
+				\item If the series has a form similar to a p-series or geometric series, then try a \textbf{Comparison Test}.
+				\item If the series involves factorials, try the \textbf{Ratio Test}.
+				\item If the series is of the form $(b_n)^n$, then the \textbf{Root Test} may be useful.
+				\item If the function inside the series can be integrated, try the \textbf{Integral Test}.
+			\end{enumerate}
+			\item \textbf{Warning:} Always remember to check if the series satisfies the pre-requirements of each test.
+		\end{itemize}
+	\section{Power Series}
+		\begin{itemize}\addtolength{\leftskip}{2em}
+			\item A \textbf{power series} is a series in the form $\sum\limits_{n=0}^{\infty}c_nx^n$
+			\item The $c_n$ terms are called the coefficient terms.
+			\item The $a$ term is called the center
+			\item \textbf{Theorem} For a given power series $\sum\limits_{n=0}^{\infty}c_n(x-a)^n$ there are only three possibilities:
+			\begin{enumerate}\addtolength{\leftskip}{4em}
+				\item The series converges only when $x=a$
+				\item The series converges for all x.
+				\item There is a positive number R such that the series converges if $|x-a|<R$ and diverges if $|x-a|>R$
+			\end{enumerate}
+			\item \textbf{Radius of convergence:} The number "R" from above is the radius of converge
+			\item \textbf{Interval of Convergence:} The interval that consists all values of x for which the series converges.
+		\end{itemize}
+	\section{Representations of Functions as Power Series}
+		\begin{itemize}\addtolength{\leftskip}{2em}
+			\item \textbf{Theorem} If the power series $\sum c_n(x-a)^n$ has a radius of convergence $R>0$, then the function defined by 
+			\begin{center}
+			$f(x)=\sum\limits_{n=0}^{\infty}c_n(x-a)^n$
+			\end{center}
+			\begin{center}
+			is differentiable (and therefore) continuous on the interval (a-R,a+R) and
+			\end{center}
+			\begin{itemize}\addtolength{\leftskip}{6em}
+				\item $f'(x)=\sum\limits_{n=1}^{\infty}nc_n(x-a)^{n-1}$
+				\item $\int f(x)\,dx=C+\sum\limits_{0}^{\infty}c_n\frac{(x-a)^{n+1}}{n+1}$
+			\end{itemize}
+			\begin{center}
+			The radii of convergence of the power series in the two equations above are both R
+			\end{center}
+			\item \textbf{Representing:} In order to represent a function as a power series, you have to get it into the general form $\frac{1}{1-x}$. Once in this form, the function can be represented as a power series:
+			\begin{center}
+			$\sum\limits_{n=0}^{\infty}(x)^n\quad\quad$ where x is any function.
+			\end{center}
+		\end{itemize}
+		\newpage
+	\section{Taylor and Maclaurin Series}
+		\begin{itemize}\addtolength{\leftskip}{2em}
+			\item \textbf{Taylor Series}: 
+			\Large$f(x)=\sum\limits_{n=0}^{\infty}\frac{f^{(n)}(a)}{n!}(x-a)^n$
+			\item \textbf{Maclaurin Series}:
+			\Large$f(x)=\sum\limits_{n=0}^{\infty}\frac{f^{(n)}(0)}{n!}x^n$
+			\item\Large $\lim\limits_{n\rightarrow \infty}\frac{x^n}{n!}=0\quad\quad$ for every real number x
+			\item \textbf{Taylor Series expansions to remember:}
+			\begin{enumerate}\addtolength{\leftskip}{4em}
+				\item \Large $e^x=\sum\limits_{n=0}^{\infty}\frac{x^n}{n!}\quad\quad\quad\quad\quad\quad\quad\;\,$   
+				\item \Large $sin\;x=\sum\limits_{n=0}^{\infty}(-1)^n\frac{x^{2n+1}}{(2n+1)!}\quad\quad$
+				\item \Large $cos\;x=\sum\limits_{n=0}^{\infty}(-1)^n\frac{x^{2n}}{(2n)!}\quad\quad\;\;\;\,$   
+				\item \Large $tan^{-1}x=\sum\limits_{n=0}^{\infty}(-1)^n\frac{x^{2n+1}}{2n+1}$ 
+				\item \Large $ln|1+x|=\sum\limits_{n=1}^{\infty}(-1)^{n-1}\frac{x^n}{n}$
+			\end{enumerate}
+		\end{itemize}
+		
+	%Bibliography
+	\begin{center}
+	\newpage
+	\textbf{\huge{Bibliography}}
+	\end{center}
+	\textbf{Book used:} Calculus Early Transcendentals 7th Edition\newline
+	\textbf{Professor:} Notes from Dr. Graham Leuschke's Spring 2012 Calculus II course
+\end{document}

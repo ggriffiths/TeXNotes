@@ -1,0 +1,537 @@
+%Include things
+\documentclass{report}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+
+\usepackage{amssymb}
+\usepackage[left=0.5in,top=1.0in,right=0.5in,bottom=1.0in]{geometry} % Document margins
+\usepackage{amsmath}
+ \usepackage[noindentafter]{titlesec}
+\titleformat{\chapter}
+  {\normalfont\Huge\bfseries}{\noindent Chapter \thechapter:}{0.5em}{}
+
+% this alters "before" spacing (the second length argument) to 0
+\titlespacing*{\chapter}{0pt}{0pt}{0pt}
+%My own macros
+\newcommand{\Fin}{$f^{-1}$}
+\newcommand{\ddx}{$\frac{d}{dx}$}
+
+\titleformat{\section}
+  {\normalfont\Large\bfseries}{\noindent Lesson \thesection:}{0.5em}{}
+
+\title{\textbf{Notes from MAT295 - Calculus I}}
+\author{\textbf{Notetaker: }Grant Griffiths}
+\date{\textbf{Semester: }Fall 2011 - Syracuse University}
+\begin{document}
+   \maketitle
+   \tableofcontents
+\chapter{Functions and Models}
+  \setcounter{section}{+5}
+\section{Inverse Functions and Logarithms}
+	\begin{itemize}\addtolength{\leftskip}{2em}
+	\item A function f is called a \textbf{one-to-one} function if it never takes on the same value twice, that is,
+	\begin{center}
+	$f(x_1)\ne f(x_2) whenever x_1\ne x_2$
+	\end{center}
+	\item \textbf{Horizontal line test:} A function is one-to-one if and only if no horizontal line intersects its graph more than once. 
+	\item Let f be a one-to-one function with domain A and range B. Then its \textbf{inverse function} $f^{-1}$ has a domain B and a range A and is  defined by
+	\begin{center}
+	$f^{-1}(y)=x \Longleftrightarrow f(x)=y$
+	\end{center} 
+	\item \textbf{Inverse Properties}
+	\begin{enumerate}\addtolength{\leftskip}{4em}
+		\item domain of {\Fin} = range of $f$
+		\item range of {\Fin} = domain of $f$
+		\item {\Fin($f(x)$)}=x for every $x \in A$
+		\item {$f$(\Fin(x))}=x for every $x \in B$
+	\end{enumerate}
+	\item \textbf{Logarithmic Properties}
+	\begin{enumerate}\addtolength{\leftskip}{4em}
+		\item $log_ax=y \Longleftrightarrow a^y=x$
+		\item $log_a(a^x)=x$ for every $x \in \mathbb{R}$
+		\item $a^{log_ax}=x$ for every $x>0$
+	\end{enumerate}
+	\item \textbf{Laws of Logarithms}
+	\begin{enumerate}\addtolength{\leftskip}{4em}
+	\item $\log _a(xy) = log_ax+log_ay$
+	\item $\log _a(\frac{x}{y}) = log_ax-log_ay$
+	\item $\log _a(x^r) = rlog_ax$ (where r is any real number)
+	\end{enumerate}
+	\item \textbf{Natural Log: }$log_ex=ln(x)$
+	\item \textbf{Properties of Natural Log:} 
+	\begin{enumerate}\addtolength{\leftskip}{4em}
+		\item $ln(x)=y \rightleftarrows e^y=x$
+		\item $ln(e^x)=x$ for all $x \in \mathbb{R}$
+		\item $e^{ln(x)}=x$ for all $x>0$
+		\item $ln(e)=1$
+	\end{enumerate}
+	\item\textbf{Change of Base Formula:} For any positive number a($a\ne1$), we have 
+	\begin{center}
+	$log_ax=\frac{ln(x)}{ln(a)}$
+	\end{center}
+	\end{itemize}
+\chapter{Limits and Derivatives}
+	\section{The Tangent and Velocity Problems}
+		\begin{itemize}\addtolength{\leftskip}{2em}
+				\item \textbf{Secant Line} - means a line that cuts (intersects) a curve morethan once.
+				\item \textbf{Instantaneous velocity} - The exact velocity at a given point
+		\end{itemize}
+		\section{The Limit of a Function}
+			\begin{itemize}\addtolength{\leftskip}{2em}
+				\item \textbf{Limit: }Suppose  $f(x)$ is defined when x is near the number a. Then we write
+					\begin{center}
+					$\lim\limits_{x \rightarrow a}f(x) =L$
+					and say "the limit of $f(x)$, as x approaches a, equals L"
+					\end{center}
+				\item \textbf{Left hand limit}
+					\begin{center}
+					$\lim\limits_{x \rightarrow a^-}f(x) =L$
+					and say "the limit of $f(x)$, as x approaches a from the left, equals L"
+					\end{center}
+				\item \textbf{Right hand limit}
+					\begin{center}
+					$\lim\limits_{x \rightarrow a^+}f(x) =L$
+					and say "the limit of $f(x)$, as x approaches a from the right, equals L"
+					\end{center}
+				\item \textbf{Limit existence: }$\lim\limits_{x \rightarrow a}f(x) =L$ \textbf{if and only if} 
+					\begin{center}
+					$\lim\limits_{x \rightarrow a^-}f(x) =L$    \textbf{   AND   }    $\lim\limits_{x \rightarrow a^+}f(x) =L$
+					\end{center}
+				\item Let $f$ be a function defined on both sides of a, except possibly at a itself. Then,
+					\begin{center}
+					$\lim\limits_{x \rightarrow a}f(x) =\inf$\newline means that the values of $f(x)$ can be made large by taking x close to a, but not equal to a
+					\end{center}
+				\item \textbf{Vertical Asymptote} - When a function's limit is $\pm\inf$ at a point from the left, right, or both.
+			\end{itemize}
+		\section{Calculating Limits using the limit laws}
+			\begin{itemize}\addtolength{\leftskip}{2em}
+				\item Properties of Limits
+				\begin{enumerate}\addtolength{\leftskip}{4em}
+					\item $\lim\limits_{x\rightarrow a}[f(x)]^n=[\lim\limits_{x\rightarrow a}f(x)]^n$
+					\item $\lim\limits_{x\rightarrow a}c=c$
+					\item $\lim\limits_{x\rightarrow a}x=a$
+					\item $\lim\limits_{x\rightarrow a}x^n=a^n$ where \textit{n} is a positive integer
+					\item $\lim\limits_{x\rightarrow a}\sqrt[n]{x}=\sqrt[n]{a}$ where \textit{n} is a positive integer
+					\item $\lim\limits_{x\rightarrow a}\sqrt[n]{f(x)}=\sqrt[n]{\lim\limits_{x\rightarrow a}f(x)}$ where \textit{n} is a positive integer
+					
+				\end{enumerate}\addtolength{\leftskip}{4em}
+				\newpage
+				\item \textbf{Direct Substitution Property} - If \textit{f} is a polynomial or a rational function and a is in the domain of \textit{f}, then 
+				\begin{center}
+				$\lim\limits_{x\rightarrow a}f(x)=f(a)$
+				\end{center}
+				\item If $f(x)=g(x)$ when $x\ne a$, then $\lim\limits_{x\rightarrow a}f(x)=\lim\limits_{x\rightarrow a}g(x)$, provided the limit exists
+				\item $\lim\limits_{x \rightarrow a}f(x)=L$ \textbf{if and only if} $\lim\limits_{x \rightarrow a^-}f(x) =L=\lim\limits_{x \rightarrow a^+}f(x)$
+				\item \textbf{Theorem: } If $f(x)\le g(x)$ when x is near a and the limits of \textit{f} and \textit{g} both exist as  x approaches a, then
+					\begin{center}
+					$\lim\limits_{x\rightarrow a}f(x)\le \lim\limits_{x\rightarrow a}g(x)$
+					\end{center} 
+				\item \textbf{The Squeeze Theorem} - If $f(x)\le g(x) \le h(x)$ except when x is near a and
+					\begin{center}$\lim\limits_{x\rightarrow a}f(x)=\lim\limits_{x\rightarrow a}h(x)=L$\end{center}
+					\begin{center}Then,\end{center}
+					\begin{center}$\lim\limits_{x\rightarrow a}g(x)=L$\end{center}
+			\end{itemize}
+		\setcounter{section}{+4}
+		\section{Continuity}
+			\begin{itemize}\addtolength{\leftskip}{2em}
+				\item A function \textit{f} is \textbf{continuous at a number a} if 
+					\begin{center}
+					$\lim\limits_{x\rightarrow a}f(x)=f(a)$
+					\end{center}
+				\item Functions can be continuous from the left, right, or both if their respective limits exist
+				\item Functions can be continuous on a certain interval if all of the values on the interval are continuous 
+				\item \textbf{Properties of continuous functions} - If \textit{f} and \textit{g} are continuous at a and c is a constant, then the follow functions are also continuous at a:
+					\begin{enumerate}\addtolength{\leftskip}{4em}
+						\item $f+g$
+						\item $f-g$
+						\item $cf$
+						\item $fg$
+						\item $\frac{f}{g}$ if $g(a)\ne 0$
+					\end{enumerate}
+				\item Any polynomial is continuous everywhere for all real numbers
+				\item Any rational function is continuous wherever it is defined; that is, it is continuous on its domain
+				\newpage
+				\item \textbf{Some function types that are continuous on their domains: }
+				\begin{enumerate}\addtolength{\leftskip}{4em}
+					\item Polynomials
+					\item Trigonometric functions
+					\item Exponential functions
+					\item Rational functions
+					\item Inverse trigonometric functions
+					\item Logarithmic functions
+					\item Root functions
+				\end{enumerate}
+				\item If \textit{f} is continuous at \textit{b} and $\lim\limits_{x\rightarrow a}g(x)=b$, then $\lim\limits_{x\rightarrow a}f(g(x))=f(b)$
+				\item If \textit{g} is continuous at a and \textit{f} is continuous at $g(a)$, then the composite function $f\circ g$ given by $f\circ g(x)=f(g(x)) $ is continuous at a
+				\item \textbf{The Intermediate Value Theorem: } Suppose that \textit{f} is continuous on the closed interval [a,b] and let \textit{N} be any number between $f(a)$ and $f(b)$, where $f(a)\ne f(b)$.
+				Then there exists a number c in (a,b) such that $f(c)=N$
+				\end{itemize}	
+		\section{Limits at infinity; horizontal asymptotes}
+			\begin{itemize}\addtolength{\leftskip}{2em}
+				\item The line $y=L$ is called a \textbf{horizontal asymptote} of the curve $y=f(x)$ if either
+				\begin{center}
+					$\lim\limits_{x\rightarrow \infty}f(x)=L$ or $\lim\limits_{x\rightarrow -\infty}f(x)=L$
+				\end{center}
+				\item If $r>0$ is a rational number, then
+					\begin{center}
+					$\lim\limits_{x\rightarrow \infty}\frac{1}{x^r}=0$
+					\end{center}
+				\item $\lim\limits_{x\rightarrow -\infty}e^x=0$
+			\end{itemize}
+		\section{Derivatives and rates of change}
+			\begin{itemize}\addtolength{\leftskip}{2em}
+				\item The \textbf{tangent line} to the curve $y=f(x)$ at the point $P(a,f(a))$ is the line through \textit{P} with slope
+				\begin{center}
+				$m=\lim\limits_{x\rightarrow a}\frac{f(x)-f(a)}{x-a}$
+				provided that this limit exists.
+				\end{center}
+				\item We sometimes refer to slope of the tangent line to a curve at a point as the \textbf{slope of the curve} at the point.
+				\item The \textbf{derivative} of a function $f$ at a number a, denoted by $f'(a)$ is 
+				\begin{center}
+				$f'(a)=\lim\limits_{h\rightarrow 0}\frac{f(a+h)-f(a)}{h}$
+				\end{center}
+				if  this limit exists.
+				\item \textbf{Instantaneous rate of change} = $\lim\limits_{\delta x \rightarrow 0}\frac{\delta y}{\delta x} = \lim\limits_{x_2 \rightarrow x_1} \frac{f(x_2)-f(x_1)}{x_2-x_1}$
+				\item The derivative $f'(a)$ is the instantaneous rate of change of $y=f(x)$ with respect to \textit{x} when $x=a$
+				
+			\end{itemize}
+		\section{The derivative as a function}
+			\begin{itemize}\addtolength{\leftskip}{2em}
+				\item The derivative of a function $f(x)$ is $f'(a)=\lim\limits_{h\rightarrow 0}\frac{f(x+h)-f(x)}{h}$
+				\item The symbols D and $\frac{d}{dx}$ are called \textbf{differentiation operators}
+				\item A function \textit{f} is \textbf{differentiable at a} if $f'(a)$ exists. It is \textbf{differentiable on an open interval} (a,b), where a or b may or may not be $\pm \infty$, if it is differentiable at every number in the interval 
+				\item If \textit{f} is differentiable at \textit{a}, then \textit{f} is continuous at \textit{a}.
+				\item Functions are not differentiable at vertical asymptotes 
+				\item The \textbf{second derivative} is the derivative of the first derivative and can be written $f''(x)$
+				\item Derivatives can also be written in Leibniz notation as $\frac{d}{dx}(\frac{dy}{dx})=\frac{d^2y}{dx^2}$
+				\item The \textbf{third derivative} is the derivative of the second derivative and can be written $f'''(x)$
+				\item The $n^{th}$ of a function $f(x)$ can be written $f^(n)(x)$ 
+				
+			\end{itemize}
+\chapter{Differentiation Rules}
+		\section{Derivative of Polynomials and Exponential Function}
+			\begin{itemize}\addtolength{\leftskip}{2em}
+				\item \textbf{Derivative of a constant} - $\frac{d}{dx}(c)=0$
+				\item $\frac{d}{dx}(x)=1$
+				\item \textbf{The Power Rule} - If n is any real number, then $\frac{d}{dx}(x^n)=nx^{n-1}$
+				\item \textbf{Constant Multiple Rule} - If \textit{c} is a constant and \textit{f} is a differentiable function, then {\ddx}$[cf(x)]=c${\ddx}$f(x)$
+				\item \textbf{The Sum Rule} - If \textit{f} and \textit{g} are both differentiable, then \ddx$[f(x)+g(x)]=$\ddx $f(x)+$\ddx$ g(x)$
+				\item \textbf{The Difference Rule} - If \textit{f} and \textit{g} are both differentiable, then \ddx$[f(x)-g(x)]=$\ddx $f(x)-$\ddx$ g(x)$
+				\item {\ddx}$(e^x)=e^x$
+				\item 
+			\end{itemize}
+		\section{Product and Quotient Rules}
+			\begin{itemize}\addtolength{\leftskip}{2em}
+				\item \textbf{Product Rule: }$(fg)'=fg' + gf')$
+				\item \textbf{Quotient Rule: }$(\frac{f}{g})'=\frac{gf'-fg'}{g^2}$
+			\end{itemize}
+		\section{Derivatives of Trigonometric Function}
+			\begin{itemize}\addtolength{\leftskip}{2em}
+				\item \ddx$sin(x)=cos(x)$
+				\item \ddx$cos(x)=-sin(x)$
+				\item \ddx$tan(x)=sec^2(x)$
+				\item \ddx$csc(x)=-csc(x)cot(x)$
+				\item \ddx$sec(x)=sec(x)tan(x)$
+				\item \ddx$cot(x)=-csc^2(x)$
+			\end{itemize}
+		\section{The Chain Rule}
+			\begin{itemize}\addtolength{\leftskip}{2em}
+				\item \textbf{The Chain Rule} - If \textit{g} is differentiable at x and f is differentiable at g(x), then the composite function $F=f\circ g$ defined by $F(x)=f(g(x))$ is differentiable at x and F' is given by the product
+				\begin{center}
+				$F'(x)=f'(g(x))g'(x)$ 
+				\end{center} 
+				In Leibniz notation, if $y=f(u)$ and $u=g(x)$ are both differentiable functions, then
+				\begin{center}
+				$\frac{dy}{dx}=\frac{dy}{du}\frac{du}{dx}$
+				\end{center}
+				\item \textbf{Power Rule combined with the Chain Rule} - If n is any real number and $u=g(x)$ is differentiable, then
+				\begin{center}
+				\ddx$(u^n)=nu^{n-1}\frac{du}{dx}$
+				Alternatively, {\ddx}$[g(x)]^n=n[g(x)]^{n-1}g'(x)$
+				\end{center}
+				\item \ddx$(a^x)=a^xln(a)$
+			\end{itemize}
+		\section{Implicit Differentiation}
+			\begin{itemize}\addtolength{\leftskip}{2em}
+				\item Steps for Implicit Differentiation
+				\begin{enumerate}\addtolength{\leftskip}{4em}
+				\item Take derivative of both sides of the equation 
+				\item Solve for y'
+				\end{enumerate}
+				\item \textbf{Derivatives of Trigonometric Functions}
+				\begin{enumerate}\addtolength{\leftskip}{4em}
+				\item \ddx$sin^{-1}x=\frac{1}{\sqrt{1-x^2})}$
+				\item \ddx$cos^{-1}x=-\frac{1}{\sqrt{1-x^2})}$
+				\item \ddx$tan^{-1}x=\frac{1}{1+x^2}$
+				\item \ddx$csc^{-1}x=-\frac{1}{x\sqrt{x^2-1})}$
+				\item \ddx$sec^{-1}x=\frac{1}{x\sqrt{x^2-1})}$
+				\item \ddx$cot^{-1}x=-\frac{1}{1+x^2}$
+				\end{enumerate}
+			\end{itemize}
+		\section{Derivatives of Logarithmic Functions}
+			\begin{itemize}\addtolength{\leftskip}{2em}
+				\item \ddx($log_ax)=\frac{1}{xln(a)}$
+				\item \ddx($ln(x))=\frac{1}{x}$
+				\item \ddx$ln|x|=\frac{1}{x}$
+				\item \textbf{Steps in Logarithmic Differentiation}
+				\begin{enumerate}\addtolength{\leftskip}{4em}
+				\item Take natural logarithms of both sides of an equation $f(x)$ and use the laws of Logarithms to simplify.
+				\item Differentiate implicitly with respect to x.
+				\item Solve the resulting equation for y'
+				\end{enumerate}
+			\end{itemize}
+			\setcounter{section}{+8}
+		\section{Related Rates}
+			\begin{itemize}\addtolength{\leftskip}{2em}
+				\item We start by identifying two things:
+				\begin{enumerate}\addtolength{\leftskip}{4em}
+				\item The given variables
+				\item The unknown variables
+				\end{enumerate}
+				\item Draw a picture
+				\item Find a formula relating the given and unknown variables
+				\item Differentiate each side
+				\item Solve for the unknown variables
+			\end{itemize}
+\chapter{Applications of Differentiation}
+		\section{Maximum and Minimum Values}
+			\begin{itemize}\addtolength{\leftskip}{2em}
+				\item Let c be a number in the domain D of a function f. Then f(c) is the
+				\begin{enumerate}\addtolength{\leftskip}{4em}
+					\item \textbf{absolute maximum} value of \textit{f} on D if $f(c)\ge f(x)$ for all x in D
+					\item \textbf{absolute minimum} value of \textit{f} on D if $f(c)\le f(x)$ for all x in D
+				\end{enumerate}
+				\item The number $f(c)$ is a 
+				\begin{enumerate}\addtolength{\leftskip}{4em}
+					\item \textbf{local maximum} value of \textit{f} if $f(c)\ge f(x)$ when \textit{x} is near \textit{c}
+					\item \textbf{local minimum} value of \textit{f} if $f(c)\le f(x)$ when \textit{x} is near \textit{c}
+				\end{enumerate}
+				\item \textbf{The Extreme Value Theorem} If \textit{f} is continuous on a closed interval [a,b], then \textit{f} attains an absolute maximum value $f(x)$ and an absolute minimum value $f(d)$ at some numbers \textit{c} and \textit{d} in [a,b]
+				\item \textbf{Fermat's Theorem}: If \textit{f} has a local maximum or minimum at c, and if $f'(c)$ exists, then $f'(c)=0$
+				\item A \textbf{critical number} of a function \textit{f} is a number c in the domain \textit{f} such that either $f'(c)=0$ or $f'(c)$ does not exist.
+				\item If \textit{f} as a local maximum or minimum at c, then c is a critical number of \textit{f}
+				\item \textbf{Closed Interval Method}: To find the \textit{absolute} maximum and minimum values of a continuous function \textit{f} on a closed interval [a,b]:
+				\begin{enumerate}\addtolength{\leftskip}{4em}
+				\item Find the values of \textit{f} at the critical numbers of \textit{f} in (a,b)
+				\item Find the values of \textit{f} at the endpoints of the interval
+				\item The largest of the values from Steps 1 and 2 is the absolute maximum value; the smallest of these values is the absolute minimum value
+				\end{enumerate}
+			\end{itemize}
+		\section{The Mean Value Theorem}
+			\begin{itemize}\addtolength{\leftskip}{2em}
+				\item \textbf{Rolle's Theorem}: Let \textit{f} be a function that satisfies the following three hypotheses: 
+				\begin{enumerate}\addtolength{\leftskip}{4em}
+				\item \textit{f} is continuous on the closed interval [a,b]
+				\item \textit{f} is differentiable on the open interval (a,b)
+				\item $f(a)=f(b)$
+				\end{enumerate}
+				Then there is a number c in (a,b) such that $f'(c)=0$
+				\item \textbf{The Mean Value Theorem}: Let \textit{f} be a function that satisfies the following hypotheses:
+				\begin{enumerate}\addtolength{\leftskip}{4em}
+				\item \textit{f} is continuous on the closed interval [a,b]
+				\item \textit{f} is differentiable on the open interval (a,b)
+				\end{enumerate}
+				Then there is a number c in (a,b) such that 
+				\begin{center}
+				$f'(c)=\frac{f(b)-f(a)}{b-a}$
+				\end{center}
+				\begin{center}
+				or, equivalent, 
+				\end{center}
+				\begin{center}
+				$f(b)-f(a)=f'(c)(b-a)$
+				\end{center}
+				\item \textbf{Theorem}: If $f'(x)=0$ for all x in an interval (a,b), then \textit{f} is constant on (a,b)
+			\end{itemize}
+		\section{How Derivatives affect the shape of a graph}
+			\begin{itemize}\addtolength{\leftskip}{2em}
+				\item \textbf{Increasing/Decreasing Test}
+				\begin{enumerate}\addtolength{\leftskip}{4em}
+				\item If $f'(x)>0$ on an interval, then \textit{f} is increasing on that interval
+				\item If $f'(x)<0$ on an interval, then \textit{f} is decreasing on that interval
+				\end{enumerate}
+				\item \textbf{The First Derivative Test} Suppose that c is a critical number of a continuous function \textit{f}
+				\begin{enumerate}\addtolength{\leftskip}{4em}
+				\item If $f'$ changes from positive to negative at \textit{c}, then \textit{f} has a local maximum at \textit{c}.
+				\item If $f'$ changes from negative to positive at \textit{c}, then \textit{f} has a local minimum at \textit{c}.
+				\item If $f'$ does not change signs at \textit{c}, then \textit{f} has no local maximum or minimum at \textit{c}.
+				\end{enumerate}
+				\textbf{Definition} If the graph of \textit{f} lies above all of its tangents on an interval I, then it is called \textbf{concave upward} on I. If the graph of \textit{f} lies below all of its tangents on I, it is called \textbf{concave downward} on I.
+				\item \textbf{Concavity Test} 
+				\begin{enumerate}\addtolength{\leftskip}{4em}
+				\item If $f''(x)>0$ for all x in I, then the graph of \textit{f} is concave upward on I.
+				\item If $f''(x)<0$ for all x in I, then the graph of \textit{f} is concave downward on I.
+				\end{enumerate}
+				\item \textbf{Definition}: A point P on a curve $y=f(x)$ is called an \textbf{inflection point} if f is continuous there and the curve changes from concave upward to concave downward or from concave downward to concave upward at P.
+				\item \textbf{Second Derivative Test}: Suppose $f''$ is continuous near c.
+				\begin{enumerate}
+				\item If $f'(c)=0 and f''(c)>0$, then \textit{f} has a local minimum at c.
+				\item If $f'(c)=0 and f''(c)<0$, then \textit{f} has a local maximum at c.
+				\end{enumerate}
+			\end{itemize}
+		\section{Indeterminate Forms and l'Hospital's Rule}
+			\begin{itemize}\addtolength{\leftskip}{2em}
+				\item \textbf{Indeterminant form:} The ratio of the limits of the numerator and denominator.
+				\item \textbf{L'Hospital's Rule:} Suppose \textit{f} and \textit{g} are differentiable and $g'(x)\ne 0$ on an open interval I that contains a (except possibly at a). Suppose that
+				\begin{center}
+				$\lim\limits_{x\rightarrow a}f(x)=0$ and $\lim\limits_{x\rightarrow a}g(x)=0$
+				\end{center}
+				\begin{center}
+				or that $\lim\limits_{x\rightarrow a}f(x)\pm \infty$ and $\lim\limits_{x\rightarrow a}g(x)=\pm \infty$
+				\end{center}
+				(In other words,s we have an indeterminant form of type $\frac{0}{0}$ or $\frac{\infty}{\infty}$). Then
+				\begin{center}
+				$\lim\limits_{x \rightarrow a}\frac{f(x)}{g(x)}=\lim\limits_{x \rightarrow a}\frac{f'(x)}{g'(x)}$
+				\end{center}
+				if the limit on the right side exists (or is $\infty$ or $-\infty$).
+			\end{itemize}
+		\section{Summary of Curve Sketching}
+			\begin{itemize}\addtolength{\leftskip}{2em}
+				\item Graph a curve depending on the following properties: domain, intercepts, symmetry, asymptotes, intervals of increase or decrease, local maximum or minimum values, and points of inflection. 
+			\end{itemize}
+			\setcounter{section}{+6}
+		\section{Optimization Problems}
+			\begin{itemize}\addtolength{\leftskip}{2em}
+				\item \textbf{Steps in Solving Optimization Problems}
+				\begin{enumerate}\addtolength{\leftskip}{4em}
+				\item \textbf{Understand the Problem} - The first step is to read the problem carefully until it is clearly understood. Ask yourself: What is the unknown? What are the given quantities? What are the given conditions?
+				\item \textbf{Draw a Diagram} - In most problems it is useful to draw a diagram and identify the given and required quantities on the diagram. 
+				\item \textbf{Introduce Notation} - Assign a symbol to the quantity that is to be maximized or minimized (Call it Q for now). Also select symbols (a,b,c,...,x,y) for other unknown quantities and label the diagram with these symbols. It may help to use initials as suggestive symbols - for example, A for area, h for height, t for time.
+				\item Express Q in terms of some of the other symbols from Step 3.
+				\item If Q has been expressed a function of more than one variable in Step 4, use the given information to find relationships (in the form of equations) among these variables. Then use these equations to elimate all but one of the variables in the expression for Q. Thus Q will be expressed as a function of \textit{one} variable x, say, $Q=f(x)$. Write the domain of this function.
+				\item Use the methods of Sections 4.1 and 4.3 to find the absolute maximum or minimum value of \textit{f}. In particular, if the domain of \textit{f} is a closed interval, then the Closed Interval Method in Section 4.1 can be used.
+				\end{enumerate}`
+				\item \textbf{First Derivative Test for Absolute Extreme Values}: Suppose that c is a critical number of a continuous function \textit{f} defined on an interval.
+				\begin{enumerate}\addtolength{\leftskip}{4em}
+				\item If $f'(x)>0$ for all $x<c$ and $f'(x)<0$ for all $x>c$, then $f(c)$ is the absolute maximum value of \textit{f}.
+				\item If $f'(x)<0$ for all $x<c$ and $f'(x)>0$ for all $x>c$, then $f(c)$ is the absolute minimum value of \textit{f}.
+				\end{enumerate}
+			\end{itemize}
+			\setcounter{section}{+8}
+		\section{Antiderivatives}
+			\begin{itemize}\addtolength{\leftskip}{2em}
+				\item \textbf{Definition:} A function F is called an \textbf{antiderivative} of \textit{f} on an interval \textit{I} if $F'(x)=f(x)$ for all \textit{x} in \textit{I}
+				\item \textbf{Theorem: }If \textit{F} is an antiderivative of \textit{f} on an interval \textit{I}, then the most general antiderivative of \textit{f} on I is 
+				\begin{center}
+				$F(x)+C$
+				\end{center}
+				where C is an arbitrary constant.
+			\end{itemize}
+\chapter{Integrals}
+		\section{Areas and Distance}
+			\begin{itemize}\addtolength{\leftskip}{2em}
+				\item An area beneath a curve or inbetween two curves can be estimated with the area of a series of rectangles
+			\end{itemize}
+		\section{The Definite Integral}
+			\begin{itemize}\addtolength{\leftskip}{2em}
+				\item \textbf{Definition of a Definite Integral: }If \textit{f} is a function defined $a\le x \le b$, we divide the interval[a,b] into \textit{n} subintervals of equal width $\Delta x=\frac{(b-a)}{n}$. We let $x_0(=a),x_1,x_2,...,x_n(=b)$ be the endpoints of these subintervals and we let $x_1^*,x_2^*,...,x_n^*$ be any \textbf{sample points} in these subintervals, so $x_i^*$ lies in the \textit{i}th subinterval $[x_{i-1},x_i]$. Then the \textbf{definite integral of f from a to b} is 
+					\begin{center}
+					$\int\limits_{a}^{b}f(x)dx=\lim\limits_{n\rightarrow \infty}\sum\limits_{i=1}^{n}f(x_i^*)\Delta x$
+					\end{center}
+				provided that this limit exists and gives the same value for all possible choices of samples. If it does exist, we say that f is \textbf{integrable} on [a,b]
+				\item The symbol $\int$ was introduced by Leibniz and is called an \textbf{integral sign}.
+				\item For the integral $\int\limits_{a}^{b}f(x)dx$, $f(x)$ is the integrand and \textit{a} and \textit{b} are called the \textbf{limits of integration}; \textit{a} is the \textbf{lower limit} and \textit{b} is the upper limit. 
+				\item This process is called integration.
+				\item \textbf{Riemann sum}: $\sum\limits_{i=1}^{n}f(x_i^*)\Delta x$
+				\item \textbf{Theorem:} If \textit{f} is continuous on [a,b], or if \textit{f} has only a finite number of jump discontinuities, then \textit{f} is integrable on [a,b]; that is, the definite integral $\int\limits_{a}^{b}f(x)dx$ exists.
+				\item \textbf{Theorem:} If \textit{f} is integrable on [a,b], then 
+					\begin{center}
+					$\int\limits_{a}^{b}f(x)dx=\lim\limits_{n\rightarrow \infty}\sum\limits_{i=1}^{n}f(x_i)\Delta x$
+					\end{center}
+					\begin{center}
+					where $\Delta x=\frac{b-a}{n}$ and $x_i=a+i\Delta x$
+					\end{center}
+				\item \textbf{Midpoint Rule:} 
+					\begin{center}
+					$\int\limits_{a}^{b}f(x)dx\approxeq \sum\limits_{i=1}^{n}f(\bar{x_i})\Delta x=\Delta [f(\bar{x_1})+...+f(\bar{x_n})]$
+					\end{center}
+					\begin{center}
+					$\Delta x =\frac{b-a}{n}$
+					\end{center}
+					\begin{center}
+					and $\bar{x}=\frac{1}{2}(x_{i-1}+x_i)=$ midpoint of $[x_{i-1},x_i]$
+					\end{center}
+					\newpage
+				\item \textbf{Properties of the Integral} 
+				\begin{enumerate}\addtolength{\leftskip}{4em}
+					\item $\int\limits_{a}^{b}cdx=c(b-a)$ where c is any constant
+					\item $\int\limits_{a}^{b}[f(x)+g(x)]dx=\int\limits_{a}^{b}f(x)dx+\int\limits_{a}^{b}g(x)dx$
+					\item $\int\limits_{a}^{b}cf(x)dx=c\int\limits_{a}^{b}f(x)dx$, where c is any constant
+					\item $\int\limits_{a}^{b}[f(x)-g(x)]dx=\int\limits_{a}^{b}f(x)dx-\int\limits_{a}^{b}g(x)dx$
+				\end{enumerate} 
+				\item \textbf{Transitive-Like integral property:} $\int\limits_{a}^{b}f(x)dx+\int\limits_{b}^{c}f(x)dx=\int\limits_{a}^{c}f(x)dx$
+				\item \textbf{Comparison Properties of the Integral}:
+				\begin{enumerate}\addtolength{\leftskip}{4em}
+				\item If $f(x)\ge 0$ for $a\ge x \ge b$, then $\int\limits_{a}^{b}f(x)dx\ge 0$
+				\item If $f(x)\ge g(x)$ for $a\ge x \ge b$, then $\int\limits_{a}^{b}f(x)dx\ge \int\limits_{a}^{b}g(x)dx$
+				\item If $m\le f(x)\le M$ for $a\le x \le b$, then 
+					\begin{center}
+					$m(b-a)\le \int\limits_{a}^{b}f(x)dx\le M(b-a)$
+					\end{center}
+				\end{enumerate}
+			\end{itemize} 
+		\section{The Fundamental Theorem of Calculus}
+			\begin{itemize}\addtolength{\leftskip}{2em}
+				\item \textbf{Fundamental Theorem of Calculus:} Suppose \textit{f} is continuous on [a,b]
+				\begin{enumerate}\addtolength{\leftskip}{4em}
+				\item If $g(x)=\int\limits_{a}^{x}f(t)dt$, then $g'(x)=f(x)$
+				\item $\int\limits_{a}^{b}f(x)dx=F(b)-F(a)$, where F is any antiderivative of \textit{f}, that is, $F'=f$
+				\end{enumerate}
+			\end{itemize}
+			\newpage
+		\section{Indefinite Integrals andthe Net Change Theorem}
+			\begin{itemize}\addtolength{\leftskip}{2em}
+				\item An integral without bounds is called an \textbf{indefinite integral}. Thus, $\int f(x)dx=F(x)$ means $F'(x)=f(X)$
+				\item \textbf{Table of Indefinite Integrals:} 
+				\begin{itemize}\addtolength{\leftskip}{4em}
+				\item $\int cf(x)=c\int f(x)dx$
+				\item $\int kdx=kx+C$
+				\item $\int [f(x)+g(x)]dx=\int f(x)dx+ \int g(x)dx$
+				\item $\int x^n dx=\frac{x^{x+1}}{n+1}+C\quad(n\ne -1)$
+				\item $\int e^x dx=e^x+C$
+				\item $\int \frac{1}{x}dx=ln|x|+C$
+				\item $\int a^xdx=\frac{a^x}{ln(a)}+C$
+				\item $\int sin(x)dx=-cos(x)+C$
+				\item $\int cos(x)dx=sin(x)+C$
+				\item $\int sec^2(x)dx=tan(x)+C$
+				\item $\int sec(x)tan(x)dx=sec(x)+C$
+				\item $\int \frac{1}{x^2+1}dx=tan^{-1}x+C$
+				\item $\int \frac{1}{\sqrt{1-x^2}}dx=sin^{-1}x+C$
+				\end{itemize}
+				\textbf{Net Change Theorem:} The integral of a rate of change is the net change:
+				\begin{center}
+				$\int\limits_{a}^{b}F'(x)dx=F(b)-F(a)$
+				\end{center}
+			\end{itemize}
+		\section{The Substitution Rule}
+			\begin{itemize}\addtolength{\leftskip}{2em}
+				\item \textbf{The Substitution Rule: }If $u=g(x)$ is a differentiable function whose range is an interval \textit{I} and \textit{f} is continuous on \textit{I}, then
+				\begin{center}
+				$\int f(g(x))g'(x)dx=\int f(u)du$
+				\end{center}
+				\item It is permissible to operate with \textit{dx} and \textit{du} after integral signs as if they were differentials
+				\item $\int tan(x)dx=ln|sec(x)|+C$
+				\item \textbf{The Substitution Rule for Definite Integrals: }If \textit{g'} is continuous on [a,b] and \textit{f} is continuous on the range of $u=g(x)$, then
+				\begin{center}
+				$\int\limits_{a}^{b}f(g(x))g'(x)dx=\int\limits_{g(a)}^{g(b)}f(u)du$
+				\end{center}
+				\item \textbf{Integrals of Symmetric Functions:} Suppose \textit{f} is continuous on [-a,a].
+				\begin{enumerate}\addtolength{\leftskip}{4em}
+					\item \textit{f} is even $[f(-x)=f(x)]$, then $\int\limits_{-a}^{a}f(x)dx=2\int\limits_{0}^{a}f(x)dx$
+					\item \textit{f} is odd $[f(-x)=-f(x)]$, then $\int\limits_{-a}^{a}f(x)dx=0$
+				\end{enumerate}
+			\end{itemize}
+	%Bibliography
+	\begin{center}
+	\newpage
+	\textbf{\huge{Bibliography}}
+	\end{center}
+	\textbf{Book used:} Calculus Early Transcendentals 7th Edition\newline
+	\textbf{Professor:} Notes from Dr. Helen Doerr's Fall 2011 Calculus 1 course
+\end{document}

@@ -1,0 +1,520 @@
+%Include things
+\documentclass{report}
+\usepackage{amssymb}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+\usepackage[left=0.5in,top=1.0in,right=0.5in,bottom=1.0in]{geometry} % Document margins
+\usepackage{amsmath}
+ \usepackage[noindentafter]{titlesec}
+\titleformat{\chapter}
+  {\normalfont\huge\bfseries}{\noindent Chapter \thechapter:}{1em}{}
+% this alters "before" spacing (the second length argument) to 0
+\titlespacing*{\chapter}{0pt}{0pt}{0pt}
+%My own macros
+\newcommand{\Ax}{A$\vec{x}$}
+\newcommand{\Vu}{$\vec{u}$}
+\newcommand{\Vv}{$\vec{v}$}
+\newcommand{\Vx}{$\vec{x}$}
+\newcommand{\mxn}{m$\times$n}
+\newcommand{\mxm}{m$\times$m}
+\newcommand{\nxm}{n$\times$m}
+\newcommand{\nxn}{n$\times$n}
+\newcommand{\Rn}{$\mathbb{R}^n$}
+\newcommand{\Rm}{$\mathbb{R}^m$}
+\newcommand{\Rthree}{$\mathbb{R}^3$}
+\newcommand{\Rtwo}{$\mathbb{R}^2$}
+\newcommand{\Rone}{$\mathbb{R}$}
+
+\titleformat{\section}
+  {\normalfont\Large\bfseries}{\noindent}{1em}{}
+
+\title{\textbf{Notes from MAT331 - First Course in Linear Algebra}}
+\author{\textbf{Notetaker: }Grant Griffiths}
+\date{\textbf{Semester: }Fall 2012 - Syracuse University}
+\begin{document}
+   \maketitle
+   \tableofcontents
+
+\chapter{Linear Equations in Linear Algebra}
+\section{Lesson 1.1: Systems of Linear Equations}
+	\begin{itemize}\addtolength{\leftskip}{2em}
+	\item \textbf{Linear Equation} - An equation that can be written in the form $ a_{1}x_{1}  + a_{2}x_{2} + ... + a_{n}x_{n} = b$
+	\item \textbf{Systems of Linear Equations} - a collection of one or more linear equations involving the same variables
+	\item \textbf{Elementary Row Operations}
+		\begin{enumerate}
+		\setlength{\itemindent}{4em}
+			\item \textbf{Replacement} - Replace one row by the sum of itself and a multiple of another row
+			\item \textbf{Interchange} - Interchange two rows
+			\item \textbf{Scaling} - Multiply all entries in a row by a nonzero constant
+		\end{enumerate}
+	\item \textbf{Row Equivalent} - when a matrix can be transformed into a another one using the row operations.
+	\item \textbf{Fact: }If the augmented matrices of two linear systems are row equivalent, then the two systems have the same solution set.
+	\end{itemize}
+
+\section{Lesson 1.2: Row Reduction and Echelon Forms}
+	\begin{itemize}\addtolength{\leftskip}{2em}
+		\item \textbf{Leading Entry} - the leftmost nonzero entry in a nonzero row
+		\item \textbf{Echelon form} requirements:
+		\begin{enumerate}
+		\setlength{\itemindent}{4em}
+			\item All non-zero rows are above any rows of all zeros
+			\item Each leading entry of a row is in a column to the right of the leading entry of the row above it
+			\item All entries in a column below a leading entry are zeros
+		\end{enumerate}
+		\item \textbf{Reduced Echelon form} additional requirements
+		\begin{enumerate}
+		\setlength{\itemindent}{4em}
+			\item The leading entry in each nonzero row is 1
+			\item Each leading 1 is the only nonzero entry in its column
+		\end{enumerate}
+		\item \textbf{Echelon Matrix} - matrix that is in echelon form
+		\item \textbf{Fact} - Any nonzero matrix may be\textbf{ row reduced}
+		\item \textbf{Pivot Position }- location in matrix A that corresponds to a leading 1 in the reduced echelon form of A
+		\item \textbf{Pivot Column }- is a column of A that contains a pivot position
+		\item \textbf{Using Row Reduction to solve a Linear System}
+		\begin{enumerate}
+		\addtolength{\leftskip}{4em}
+			\item Write the augmented matrix of the system
+			\item Use the row reduction algorithm to obtain an equivalent augmented matrix in echelon form. Decide whether the system is consistent. If there is no solution, stop; otherwise, go to the next step.
+			\item Continue row reduction to obtain the reduced echelon form. Write the system of equations corresponding to the matrix obtained in step 3.
+			\item Write the system of equations corresponding to the matrix obtained in step 3.
+			\item Rewrite each nonzero equation from step 4 so that its one basic variable is expressed in terms of any free variables appearing the equation. 
+		\end{enumerate}
+
+		 
+	\end{itemize}
+\section{Lesson 1.3: Vector Equations}
+	\begin{itemize}\addtolength{\leftskip}{2em}
+		\item \textbf{Column Vector} - a matrix with only one column 
+		\item \textbf{Equal} - two vectors are equal iff their corresponding entries are equal.
+		\item \textbf{Vector Addition} - Given two vectors $\vec{u}$ and $\vec{v}$ in $\mathbb{R}^{2}$, their sum is the vector u + v obtained by adding corresponding entries of u and v.
+		\item \textbf{Scalar Multiple} - Given a vector u and a real number c, the scalar multiple of u by c is the vector cu
+		\item \textbf{Parallelogram Rule for Addition} - If u and v in {\Rtwo} are represented as points in the plane, then u + v corresponds to the fourth vertex of the parallelogram whose other vertices are u, 0, and v.
+		\item If $v_1,...,v_p$ are in \Rn, then the set of all linear combinations of $v_1,...,v_p$ is denoted by $Span\{v_1,...,v_p\}$, and is called the subset of {\Rn} spanned (or generated) by $v_1,...,v_p$. That is, $Span\{v1,...,vp\}$ is the collection of vectors that can be written in form
+		$c_1v_1+c_2v_2+...+c_pv_p$
+			with $c_1...c_p$ scalars.
+	\end{itemize}
+\section{Lesson 1.4: The Matrix Equation Ax = b}
+	\begin{itemize}\addtolength{\leftskip}{2em}
+		\item If A is an m$\times$n matrix, with columns $a_{1}...a_{n}$, and $\vec{x}$ is in $\mathbb{R}^2$, then the \textbf{product of A and $\vec{x}$}, denoted by A$\vec{x}$, is the \textbf{linear combination of the columns of A using the corresponding entries in $\vec{x}$ as  weights}; that is, \linebreak \begin{center}$A\vec{x} = [a_{1} \space a_{2} \space ... \space a_{n}]$
+		$\begin{bmatrix} x_1 \\ ... \\ x_n \end{bmatrix} = x_{1}\vec{a_{1}}+x_{2}\vec{a_{2}}+...+x_{n}\vec{a_{n}}$\end{center}
+		\item If A is an m $\times$ n matrix, with columns $a_{1},...,a_{n}$, and if b is in $\mathbb{R}^{m}$, the matrix equation
+		\begin{center}
+		$A\vec{x}=\vec{b}$
+		\end{center}
+		has the same solution set as the vector equation $x_{1}\vec{a_{1}}+x_{2}\vec{a_{2}}+...+x_{n}\vec{a_{n}}=\vec{b}$
+		which, in turn, has the same solution set as the system of linear equations whose augmented matrix is $[\vec{a_1}$ $\vec{a_2}$ ... $\vec{a_n}]$
+		\item The equation A$\vec{x}=b$ has a solution iff $\vec{b}$ is a linear combination of the columns of A.
+		\item Let A be an $m\times n$ matrix. Then the following statements are logically equivalent. That is, for a particular A, either they are all true statements or they are all false.
+			\begin{enumerate}\addtolength{\leftskip}{4em}
+			\item For each $\vec{b}$ in $\mathbb{R}^m$, the equation A$\vec{x}=b$ has a solution.
+			\item Each $\vec{b}$ in $\mathbb{R}^m$ is a linear combination of the columns of A.
+			\item The columns of A span $\mathbb{R}^m$
+			\item A has a pivot position in every row.
+			\end{enumerate}
+		\item \textbf{Row-Vector Rule for computing }\Ax\newline
+		If the product {\Ax} is defined, then the $i$th entry in {\Ax} is the sum of products of corresponding entries from row $i$ of A and from the vector $\vec{x}$
+		\item \textbf{Identity Matrix} - when there are a set of diagonal 1's from the top left to bottom right in a square matrix.
+		\item If A is an {\mxn} matrix, {\Vu} and {\Vv} are vectors in {\Rn}, and c is a scalar, then:
+			\begin{enumerate}\addtolength{\leftskip}{4em}
+				\item A(\Vu+\Vv) = A\Vu+A\Vv
+				\item A(c\Vu) = c(A\Vu)
+			\end{enumerate}
+	\end{itemize}
+	
+\section{Lesson 1.5: Solution Sets of Linear System}
+	\begin{itemize}\addtolength{\leftskip}{2em}
+		\item A system of linear equations is said to be \textbf{homogeneous} if it can be written in the form \Ax=0, where A is in an {\mxn} matrix and 0 is the zero factor in $\mathbb{R}^m$
+		\item The homogeneous equation A\Vx=0 has a nontrivial solution iff the equation has at least one free variable.
+		\newline Such a system \Ax=0 always has at least one solution, namely, x=0. This zero solution is usually called the \textbf{trivial solution}.
+		\item \textbf{Nontrivial Solution} - a nonzero vector $\vec{x}$ that satisfies \Ax=0
+		\item The homogeneous equation \Ax=0 has a nontrivial solution iff the equation has at least one free variable.
+		\item Whenever a solution set is described explicitly with vectors, we say that the solution is in \textbf{parametric vector form.}
+		\item Equation of a line through p parallel to v: x = \textbf{p} + t\textbf{v}
+		\item Suppose the equation \Ax=b is consistent for some given b, and let p be a solution. Then the solution set of \Ax=b is the set of all vectors of the form \textbf{w}=\textbf{p}+\textbf{v}$_{h}$, where \textbf{v}$_{h}$ is any solution of the homogeneous equation \Ax=0.
+		\item \textbf{Writing a solution set in parametric vector form}
+			\begin{enumerate}\addtolength{\leftskip}{4em}
+			\item Row reduce the augmented matrix to reduced echelon form
+			\item Express each basic variable in terms of any free variables appearing in an equation.
+			\item Write a typical solution {\Vx} as a vector whose entries depend on the free variables, if any.
+			\item Decompose {\Vx} into a linear combination of vectors(with numeric entries) using the free variables as parameters.
+			\end{enumerate}
+	\end{itemize}
+\section{Lesson 1.7: Linear Independence}
+	\begin{itemize}\addtolength{\leftskip}{2em}
+		\item \textbf{Linearly independent} - There are no free variables in a vector equation
+		\item \textbf{Linearly dependent} - There is at least one free variable in a vector equation
+		\item The columns of a matrix A are linearly indepedent iff the equation \Ax=0 has only the trivial solution.
+		\item A set of two vectors {$\vec{v}_1,\vec{v}_2$} is linearly depednet if at least one of the vectors is a multiple of te other. The set is linearly indepdent iff neither of the cvectors is a multiple of the other.
+		\item  An indexed set S = {$v_1,...,v_p$} of two or more vectors is linearly dependent iff at least one of the vectors in S is a linear combination of the others.
+		\item If a set contains more vectors than there are entries in each vector, then the set is linearly dependent. 
+		\item if a set S = ${v_1,...,v_p}$ in {$\mathbb{R}^n$} contains the zero vector, then the set is linearly dependent. 
+	\end{itemize}
+	
+	\newpage
+\section{Lesson 1.8: Introduction to Linear Transformations}
+	\begin{itemize}\addtolength{\leftskip}{2em}
+		\item A \textbf{transformation (or function or mapping)} T from {\Rn} to {\Rm} is a rule that assigns to each vector {\Vx} in {\Rn} a vector T({\Vx}) in {\Rm}. The set \Rn is called the \textbf{domain} of T, and {\Rm} is called the codomain of T.
+		\item \textbf{Image} - the vector T({\Vx})
+		\item \textbf{Range} - the set of all images T({\Vx})
+		\item Let A = $\begin{bmatrix}
+		1 & 3\\
+		0 & 1\end{bmatrix}$. The transformation T:{\Rtwo}$\rightarrow${\Rtwo} defined by T(\textbf{x})=A\textbf{x} is called the \textbf{shear transformation}. 
+		\item A transformation (or mapping) T is \textbf{linear} if:
+			\begin{enumerate}\addtolength{\leftskip}{4em}
+			\item T(\Vu+Vv)=T(\Vu)+T(\Vv) for all {\Vu},{\Vv} in the domain of T
+			\item T(c\Vu)=cT(\Vu) for all scalars c and all {\Vu} in the domain of T
+			\end{enumerate}
+		\item If T is a linear transformation, then
+		\begin{center}T(\textbf{0})=\textbf{0}\end{center}
+		\begin{center}
+		and
+		\end{center}
+		\begin{center}
+		T(c\Vu+d\Vv)=cT(\Vu)+dT(\Vv)
+		\end{center}
+		for all vectors {\Vu}, {\Vv}, in the domain of T and all scalars c,d.
+		\item Given a scalar r, define T:\Rtwo$\rightarrow${\Rtwo} by T(\Vx)=r{\Vx}. T is called \textbf{contraction} when $0\leq r\leq 1$ and a \textbf{dilation} when $r>1$.
+		
+	\end{itemize}
+	\newpage
+\section{Lesson 1.9: The Matrix of a Linear Transformation}
+	\begin{itemize}\addtolength{\leftskip}{2em}
+		\item Let T:{\Rn}$\rightarrow${\Rm} be a linear transformation Then there exists a unique matrix A such that 
+		\begin{center}
+		T(\Vx)={\Ax} for all {\Vx} in {\Rn}
+		\end{center}
+		In fact, A is the {\mxn} matrix whose \textit{j}th column is the vector T($\vec{e}_j$) where $\vec{e}_j$ is the \textit{j}th column of the identity matrix in {\Rn}:
+		\begin{center}
+		A=$\begin{bmatrix}
+		T(\vec{e}_1) & ... & {T(\vec{e}_n)}
+		\end{bmatrix}$
+		\end{center}
+		\item \textbf{Reflections}
+		\begin{itemize}\addtolength{\leftskip}{2em}
+			\item Reflection through the $x_1$-axis: 
+				$\begin{bmatrix}
+				1 & 0\\
+				0 & -1
+				\end{bmatrix}$
+			\item Reflection through the $x_2$-axis: 
+				$\begin{bmatrix}
+				-1 & 0\\
+				0 & 1
+				\end{bmatrix}$
+			\item Reflection through line $x_2$=$x_1$: 
+				$\begin{bmatrix}
+				0 & 1\\
+				1 & 0
+				\end{bmatrix}$
+			\item Reflection through line $x_2$=-$x_1$:
+				$\begin{bmatrix}
+				0 & -1\\
+				-1 & 0
+				\end{bmatrix}$ 
+			\item Reflection through the origin:
+				$\begin{bmatrix}
+				-1 & 0\\
+				0 & -1
+				\end{bmatrix}$
+	
+			
+		\end{itemize}
+		\item \textbf{Contractions and Expansions}
+		\begin{itemize}\addtolength{\leftskip}{2em}
+			\item Horizontal contraction and expansion
+			
+			\item Vertical contraction and expansion
+		\end{itemize}
+		\item \textbf{Shears}
+		\begin{itemize}\addtolength{\leftskip}{2em}
+			\item Horizontal Shear: 
+				$\begin{bmatrix}
+				1 & k\\
+				0 & 1
+				\end{bmatrix}$
+			\item Vertical Shear: 
+				$\begin{bmatrix}
+				1 & 0\\
+				k & 1
+				\end{bmatrix}$
+		\end{itemize}
+		\item \textbf{Projections}
+		\begin{itemize}\addtolength{\leftskip}{2em}
+			\item Projection onto the $x_1$-axis: 
+				$\begin{bmatrix}
+				1 & 0\\
+				0 & 0
+				\end{bmatrix}$
+			\item Projection onto the $x_2$-axis: 
+				$\begin{bmatrix}
+				0 & 0\\
+				0 & 1
+				\end{bmatrix}$
+		\end{itemize}
+		\item A mapping T:\Rn$\rightarrow${\Rm} is said to be \textbf{onto} {\Rm} if each $\vec{b}$ in {\Rm} is the image of at least one $\vec{x}$ in {\Rn}.
+		\item A mapping T:\Rn$\rightarrow${\Rm} is said to be \textbf{one-to-one} {\Rm} if each $\vec{b}$ in {\Rm} is the image of at most one $\vec{x}$ in {\Rn}.
+		\item Let T:\Rn$\rightarrow${\Rm} be a linear transformation. Then T is one-to-one iff the equation T(\Vx)=0 has only the trivial solution.
+		\item Let T:\Rn$\rightarrow${\Rm} and Let A be the standard matrix for T. Then:
+			\begin{enumerate}\addtolength{\leftskip}{4em}
+			\item T maps {\Rn} onto {\Rm} iff the columns of A spans {\Rm}
+			\item T is one-to-one iff the columns of A are linearly independent. 
+			\end{enumerate}
+	\end{itemize}
+\chapter{Matrix Algebra}
+\section{Lesson 2.1: Matrix Operations}
+	\begin{itemize}\addtolength{\leftskip}{2em}
+		\item The \textbf{diagonal entries} in an {\mxn} matrix A = {$[a_{ij}]$} are {$a_{11}$},{$a_{22}$},{$a_{33}$},..., and they form the \textbf{main diagonal} of A.
+		\item A \textbf{diagonal matrix} is a square {$n \times n$} matrix whose non-diagonal entries are zero. 
+		\item A matrix whose entries are all 0 is a \textbf{zero matrix} and is written as 0. 
+		\item Two matrices are \textbf{equal} if they have the same size and their corresponding columns are equal.
+		\item The sum of two matrices A and B is the matrix whose columns are the sums of the columns of A and B.
+		\item \textbf{Scalar Multiple} - matrix rA whose columns are r times the corresponding columns A.
+		\item Matrices follow standard algebraic laws such as commutativity, associativity, distributivity, A + 0 = A, and IA = A.
+		\item AB = A$[b_1$ $b_2$ ... $b_p$]=[A$b_1$ A$b_2$ ... A$b_p]$
+		\item Each column of AB is a linear combination of the columns of A using weights from the corresponding columns of B.
+		\item \textbf{Row-columns rule for computing AB}\newline If the product AB is defined, then the entry in row i and colun j of AB is the sum of the products of corresponding entries from row i of A and column j of B. If (AB){$_{ij}$} denotes the (i,j)-entry in AB, and if A is an {\mxn} matrix, then 
+		\begin{center}
+			(AB){$_{ij}$}={$a_{i1}b_{1j}+a_{i2}b_{2j}+..a_{in}b_{nj}$}
+		\end{center}
+		\item\textbf{WARNINGS:}
+		\begin{enumerate}\addtolength{\leftskip}{2em}
+		\item In general, AB$\ne$BA
+		\item The cancellation laws do not hold for matrix multiplication. That is, if AB = AC, then it is \textit{not} true in general that B = C.
+		\item If a product AB is the zero matrix, you \textit{cannot} conclude in general that either A = 0 or B = 0.
+		\end{enumerate}
+		\item A$^k$ = $\underbrace{A \cdot \cdot \cdot A}$ for k times.
+		\item Given an {\mxn} matrix A, the \textbf{transpose} of A is the {\nxm} matrix, denoted by {$A^T$}, whose columns are formed from the corresponding rows of A.
+		\begin{center}
+			A = 
+			$\begin{bmatrix}
+			a & b\\
+			c & d
+			\end{bmatrix}$,
+			B = 
+			$\begin{bmatrix}
+			-5 & 2\\
+			1 & -3\\
+			0 & 4
+			\end{bmatrix}$,
+			C = 
+			$\begin{bmatrix}
+			1 & 1 & 1 & 1\\
+			-3 & 5 & -2 & 7
+			\end{bmatrix}$
+		\end{center}
+		Then
+		\begin{center}
+		$A^T$=
+			$\begin{bmatrix}
+			a & c\\
+			b & d
+			\end{bmatrix}$,
+		$B^T$=
+			$\begin{bmatrix}
+			-5 & 1 & 0\\
+			2 & -3 & 4
+			\end{bmatrix}$,
+		$C^T$=
+			$\begin{bmatrix}
+			1 & -3\\
+			1 & 5\\
+			1 & -2\\
+			1 & 7
+			\end{bmatrix}$
+		\end{center}
+		\item Let A and B denote matrices whose sizes are appropriate for the following sums and products.
+		\begin{enumerate}\addtolength{\leftskip}{2em}
+		\item $(A^T)^T=A$
+		\item $(A+B)^T=A^T+B^T$ 
+		\item For any scalar r, $(rA)^T=rA^T$
+		\item $(AB)^T=B^TA^T$
+		\end{enumerate}
+	\end{itemize}
+\section{Lesson 2.2: The Inverse of a Matrix}
+	\begin{itemize}\addtolength{\leftskip}{2em}
+		\item \textbf{Singular Matrix} - matrix that cannot be inverted
+		\item \textbf{Nonsingular Matrix} - matrix that can be inverted
+		\item $A^{-1}A=I$ and $AA^{-1}=I$
+		\item Let $A= \begin{bmatrix}
+		a & b\\
+		c & d
+		\end{bmatrix}$. If $ad-bc \ne 0$, then A is invertible and
+		\begin{center}
+		$A^{-1}=\frac{1}{ad-bc}\begin{bmatrix}
+		d & -b\\
+		-c & a
+		\end{bmatrix}$
+		\end{center}
+		If $ad-bc=0$, then A is not invertible.
+		\item The quantity $det\,A = ad-bc$ is called the \textbf{determinant} of A.
+		\item If A is an invertible matrix, then for each b in \Rn, the equation \Ax=b has the unique solution $\vec{x}=A^{-1}b$.
+		\item If A and B are invertible matrices then,
+		\begin{enumerate}\addtolength{\leftskip}{4em}
+			\item $(A^{-1})^{-1}=A$
+			\item $(AB)^{-1}=B^{-1}A^{-1}$
+			\item $(A^T)^{-1}=(A^{-1})^T$
+		\end{enumerate}
+		\item An \textbf{elementary matrix} is one that is obtained by performing a single elementary row operation on an identity matrix.
+		\item An {\nxn} matrix A is invertible iff A is row equivalent to $I_{n}$, and in this case, any sequence of elementary row operations that reduces A to $I_{n}$, also transforms $I_{n}$ into $A^{-1}$.
+		\item How to find $A^{-1}$
+		\begin{enumerate}\addtolength{\leftskip}{4em}
+		\item Row reduce the augmented matrix [A  I]
+		\item If A is row equivalent to I, then [A  I] is row equivalent to [I  $A^{-1}$]
+		\item Else, A  does not have an inverse
+		\end{enumerate}
+	\end{itemize}
+\section{Lesson 2.3: Characterizations of invertible Matrices}
+	\begin{itemize}\addtolength{\leftskip}{2em}
+		\item Let A be a square {\nxn} matrix. Then, the following statements must be all true or all false:
+		\begin{enumerate}\addtolength{\leftskip}{4em}
+		\item A is an invertible matrix
+		\item A is row equivalent to the {\nxn} identity matrix
+		\item A has n pivot position
+		\item The equation {\Ax}=0 has only the trivial solution
+		\item The columns of A form a linearly independent set
+		\item The Linear Transformation x $\rightarrow$ {\Ax} is one-to-one
+		\item The equation {\Ax}=b has at least one solution for each b in {\Rn}
+		\item The linear transformation x $\rightarrow$ {\Ax} maps {\Rn} onto {\Rn} 
+		\item There is an {\nxn} matrix C such that CA = I
+		\item There is an {\nxn} matrix D such that AD = I
+		\item $A^T$ is an invertible matrix
+		\end{enumerate}
+		\item Let A and B be square matrices. If $AB = I$, then A and B are both invertible with $B=A^{-1}$ and $A=B^{-1}$
+	\end{itemize}
+\section{Lesson 2.4 Partitioned Matrices}
+	\begin{itemize}\addtolength{\leftskip}{2em}
+		\item You can split a matrix into parts called \textbf{Partitions}
+	\end{itemize}
+\section{Lesson 2.8 Subspaces of R}
+	\begin{itemize}\addtolength{\leftskip}{2em}
+		\item A \textbf{subspace} of {\Rn} is any set H in {\Rn} that has three properties: 
+		\begin{enumerate}\addtolength{\leftskip}{4em}
+		\item The Zero vector is in H
+		\item For each $\vec{u}$ and $\vec{v}$ in H, the sum $\vec{u}$ + $\vec{v}$ is in H.
+		\item For each $\vec{u}$ in H and each scalar c, the vector c$\vec{u}$ is in H.
+		\end{enumerate}
+		\item We now refer to $Span\{v_1,...,v_p\}$ as the \textbf{subspace spanned} (or \textbf{generated}) by $v_1,...,v_p$
+		\item \textbf{Zero subspace }- subspace containing only the zero vector
+		\item \textbf{Column Space} of a matrix A is the set Col A of all linear combinations of the columns of A.
+		\item If $A=[a_1 ... a_n]$, with the columns in {\Rn}, then Col A is the same as $Span\{a_1,...,a_n\}$. 
+		\item Col A equals {\Rm} only when the columns of A span {\Rm}. Otherwise, Col A is only part of {\Rm}
+		\item The \textbf{null space} of a matrix A is the set Nul A of all solutions of the homogenous equation {\Ax}=0
+		\item The null space of an {\mxn} matrix A is a subspace of {\Rn}. Equivalently, the set of all solutions of a system {\Ax}=0 of \textit{m} homogenous linear equations in \textit{n} unknowns is a subspace of {\Rn}.
+		\item A \textbf{basis} for a subspace H of {\Rn} is a linearly independent set in H that spans H.
+		\item The pivot columns of a matrix A form a basis for the columns of A.
+		\item \textbf{Warning:} Be careful to use \textit{pivot columns} of A \textit{itself} for the basis of Col A. The columns of an echelon form B are often not in the column space of A.
+	\end{itemize}
+	
+	\newpage
+\section{Lesson 2.9 Dimension and Rank}
+	\begin{itemize}\addtolength{\leftskip}{2em}
+		\item Suppose the set $\beta = {b_1,...,b_p}$ is a basis for a subspace H. For each x in H, the \textbf{coordinates of x relative to the basis $\beta$} are the weights ${c_1,...,c_p}$ such that $x=c_1b_1+...+c_pb_p$, and the vector in $\mathbb{R}^p$
+		\begin{center}
+		$[X]_{\beta}=\begin{bmatrix}
+		c_1\\
+		...\\
+		c_p
+		\end{bmatrix}$
+		\end{center}
+		is called the \textbf{coordinate vector of x (relative to $\beta$)} or the $\beta$-\textbf{Coordinate vector of x}
+		\item The \textbf{dimension} of a nonzero subspace H, denoted by dim H, is t he number of vectors in any basis for H. The dimension of the zero subspace {0} is defined to be zero.
+		\item The \textbf{rank} of matrix A, denoted by rank A, is the dimension of the column space of A.
+		\item \textbf{The Rank Theorem: }If a matrix A has n columns, then rank A + dim Nul A = n
+		\item \textbf{The Basis Theorem: } Let H be a p-dimensional subspace of {\Rn}. Any linearly independent set of exactly p elements in H is automatically a basis for H. Also, any set of p elements of H that spans H is automatically a basis for H. 
+		\item \textbf{The Invertible Matrix Theorem (continued): } \newline Let A be an {\nxn} matrix. Then the following statements are each equivalent to the statement that A is an invertible matrix.
+		\begin{enumerate}\addtolength{\leftskip}{4em}
+		\item The columns of A form a basis of {\Rn} 
+		\item Col A = {\Rn} 
+		\item dim Col A = n
+		\item rank A = n
+		\item Nul A = {0}
+		\item dim Nul A = 0
+		\end{enumerate}
+	\end{itemize}
+\chapter{Determinants}
+\section{Lesson 3.1 Introduction to Determinants}
+	\begin{itemize}\addtolength{\leftskip}{2em}
+		\item If A is an $2\times 2$ matrix, then the determinant of A, written det A, = $a_{11}a_{22}-a_{12}a_{21}$
+		\item For $n \geq 2$, the \textbf{determinant} of an {\nxn} matrix $A=[a_{ij}]$ is 
+		\begin{center}
+		$\sum\limits_{j=1}^{n}(-1)^{1+j}a_{1j}det A_{1j}$
+		\end{center} 
+		\item The determinant of an {\nxn} matrix A can be computed by a cofactor expansion across any column. The expansion across the \textit{i}th row using the cofactors in $C_{ij}=(-1)^{i+j}$det $A_{ij}$  is 
+		\begin{center}
+		det A = $a_{i1}C_{i1}+a_{i2}C_{i2}+...+a_{in}C_{in}$
+		\end{center}
+		The cofactor expansion down the jth column is 
+		\begin{center}
+		det A = $a_{1j}C_{1j}+a_{2j}C_{2j}+...+a_{2j}C_{2j}$
+		\end{center}
+		\item If A is a triangular matrix, then det A is the product of the entries in the main diagonal of A.
+	\end{itemize}
+\section{Lesson 3.2 Properties of Determinants}
+	\begin{itemize}\addtolength{\leftskip}{2em}
+		\item Let A be a square matrix
+		\begin{enumerate}\addtolength{\leftskip}{4em}
+		\item If a multiple of one row of A is added to another row to produce a matrix B, then det B = det A 
+		\item If two rows of A are interchanged to produce B, then det B = -det A
+		\item If one row of A is multiplied by k to produce B, then det B = k det A
+		\end{enumerate}
+		\item A square matrix A is invertible iff det $A\ne 0$
+		\item If A is an {\nxn} matrix, then det $A^T$=det A
+		\item \textbf{Multiplicative Property} - If A and B are {\nxn} matrices, then det AB = $(det A)(det B)$
+		\item \textbf{Warning:} det(A+B)$\ne$det(A)+det(B) in general.
+	\end{itemize}
+	
+	\newpage
+\section{Lesson 3.3 Cramer's Rule, Volume, and Linear Transformations}
+	\begin{itemize}\addtolength{\leftskip}{2em}
+		\item \textbf{Cramer's Rule} - Let A be an invertible {\nxn} matrix. For any $\vec{b}$ in {\Rn}, the unique solution $\vec{b}$ of {\Ax}=$\vec{b}$ has entries given by
+		\begin{center}
+		$x_i=\frac{det(A_i)(b)}{det(A)}$,   $i=1,2,...,n$
+		\end{center}
+		\item A matrix of cofactors is called a \textbf{adjugate} (or \textbf{classical adjoint}) of A, denoted by adj A
+		\item \textbf{An Inverse Formula} - Let A be an invertible {\nxn} matrix. Then, \begin{center}
+		$A^{-1}=\frac{1}{det(A)}adj(A)$
+		\end{center}
+		\item If A is a $2\times 2$ matrix, the area of the parallelogram determined by the columns of A is $|det A|$
+		\item If A is a $3\times 3$ matrix, the volume of the parallelepiped determined by the columns of A is $|det A|$
+		\item Let T: $\mathbb{R}^2 \rightarrow \mathbb{R}^2$ be the linear transformation determined by a $2\times 2$ matrix A. If S is a parallelogram in $\mathbb{R}^2$, then
+		\begin{center}
+		\{area of T(S)\}=$|det A|\cdot\{area\,\,of\,\,S\}$
+		\end{center}
+		If T is determined by a $3\times 3$ matrix A, and if S is a parallelepiped in $\mathbb{R}^2$, then 
+		\begin{center}
+		\{volume of T(S)\}=$|det A|\cdot\{volume\,\,of\,\,S\}$
+		\end{center}
+	\end{itemize}
+	  \setcounter{chapter}{+4}
+\chapter{Eigenvalues and Eigenvectors}
+	\section{Lesson 5.1 Eigenvectors and Eigenvalues}
+		\begin{itemize}\addtolength{\leftskip}{2em}
+			\item An \textbf{eigenvector} of an {\nxn} matrix A is a non zero vector $\vec{x}$ such that $A\vec{x}=\lambda\vec{x}$ for some scalar $\lambda$. A scalar $\lambda$ is called an \textbf{eigenvalue} of A if there is a nontrivial solution $\vec{x}$ of $A\vec{x}=\lambda\vec{x}$; such an $\vec{x}$ is called an \textit{eigenvector corresponding to $\lambda$}.
+			\item \textbf{Eigenspace}: The subspace defined as the set of all solutions to $(A-\lambda I)\vec{x}=0$
+			\item The eigenvalues of a triangular matrix are the entries on its main diagonal
+			\item If $v_1,...,v_r$ are eigenvectors that correspond to distinct eigenvalues $\lambda_1,...,\lambda_r$ of an {\nxn} matrix A, then the set $\{v_1,...,v_r \}$ is linearly independent.
+		\end{itemize}
+%	\section{Lesson 5.2 The Characteristic Equation}
+%		\begin{itemize}\addtolength{\leftskip}{2em}
+%			\item 
+%		\end{itemize}
+%	\section{Lesson 5.3 Diagonalization}
+%		\begin{itemize}\addtolength{\leftskip}{2em}
+%			\item 
+%		\end{itemize}
+
+	\begin{center}
+	\newpage
+	\textbf{\huge{Bibliography}}
+	\end{center}
+	\textbf{Book used:} David C. Lay's Linear Algebra and its application 4th Edition\newline
+	\textbf{Professor:} Notes from Dr. Gregory Verchota's Fall 2012 course MAT331 - First Course in Linear Algebra
+\end{document}

@@ -1,0 +1,493 @@
+%Include things
+\documentclass{report}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage[left=0.5in,top=1.0in,right=0.5in,bottom=1.0in]{geometry} % Document margins
+\usepackage{amsmath}
+ \usepackage[noindentafter]{titlesec}
+\titleformat{\chapter}
+  {\normalfont\huge\bfseries}{\noindent Chapter \thechapter:}{0.5em}{}
+% this alters "before" spacing (the second length argument) to 0
+\titlespacing*{\chapter}{0pt}{0pt}{0pt}
+%My own macros
+\newcommand{\Fin}{$f^{-1}$}
+\newcommand{\ddx}{$\frac{d}{dx}$}
+\newcommand{\Rt}{$\mathbb{R}^3\;$}
+\newcommand{\vu}{$\mathbf{u}\;$}
+\newcommand{\vv}{$\mathbf{v}\;$}
+\newcommand{\va}{$\mathbf{a}\;$}
+\newcommand{\vb}{$\mathbf{b}\;$}
+\newcommand{\vc}{$\mathbf{c}\;$}
+
+
+
+\titleformat{\section}
+  {\normalfont\Large\bfseries}{\noindent Lesson \thesection:}{0.5em}{}
+
+\title{\textbf{Notes from MAT275 - Abstract Mathematics}}
+\author{\textbf{Notetaker: }Grant Griffiths}
+\date{\textbf{Semester: }Fall 2012 - Syracuse University}
+\begin{document}
+   \maketitle
+   \tableofcontents 
+
+\chapter{Logic and Proof}
+	\section{Proofs, What and Why?}
+		\begin{itemize}\addtolength{\leftskip}{2em}
+			\item \textbf{Proof:} logically sound argument or explanation that takes in account all generalities of the situation and reaches the desired conclusion.
+			\item \textbf{Prime Number:} positive integer with exactly two divisors 
+			\item \textbf{Composite number:} an integer 2 that is not a prime number.
+			\item \textbf{Factorial Function}
+		\end{itemize}
+	\section{Statements and Non-statements}
+		\begin{itemize}\addtolength{\leftskip}{2em}
+			\item \textbf{Statement:} any sentence that has exactly one truth value.
+			\item \textbf{Paradox:} a sentence with proper grammatical structure, yet one that cannot have a truth value.
+			\item \textbf{Propositional Function:} Can be true depending on the input
+			\item \textbf{Truth Set:} the set of objects for which a propositional function has value True
+		\end{itemize}
+	\section{Logical Operations and Logical Equivalence}
+		\begin{itemize}\addtolength{\leftskip}{2em}
+			\item \textbf{Conjunction} of P with Q, written $P\wedge Q$, is given by the following \textbf{truth table}:
+				\begin{displaymath}
+				\begin{array}{|c|c|c|c|c|c|c}
+				   P
+				 & Q
+				 & P\wedge Q\\
+				\hline
+				F & F & F\\
+				F & T & F\\
+				T & F & F\\
+				T & T & T\\
+				\hline
+				\end{array}
+				\end{displaymath}
+				
+			\item \textbf{Disjunction} of P with Q, written $P\vee Q$, is given by the following \textbf{truth table}:
+				\begin{displaymath}
+				\begin{array}{|c|c|c|c|c|c|c}
+				   P
+				 & Q
+				 & P\vee Q\\
+				\hline
+				F & F & T\\
+				F & T & T\\
+				T & F & T\\
+				T & T & F\\
+				\hline
+				\end{array}
+				\end{displaymath}
+			\item \textbf{Negation} of P, written $\neg P$, is given by the following \textbf{truth table}:
+				\begin{displaymath}
+				\begin{array}{|c|c|c|c|c|c|c}
+				   P
+				 & \neg P\\
+				\hline
+				T & F\\
+				F & T\\
+				\hline
+				\end{array}
+				\end{displaymath}
+			\item Two expressions are \textbf{logically equivalent}, written $E_1\Leftrightarrow E_2$, if their truth tables match.
+			\item \textbf{Proposition:} Let P, Q, and R be statements. Then
+			\begin{enumerate}\addtolength{\leftskip}{4em}
+				\item $\neg (\neg P) \Longleftrightarrow P$
+				\item $\neg (P\vee Q) \Longleftrightarrow \neg P \wedge \neg Q$
+				\item $\neg (P\wedge Q) \Longleftrightarrow \neg P \vee \neg Q$
+				\item $P\wedge (Q \vee R) \Longleftrightarrow (P\wedge Q)\vee (P\wedge R)$
+				\item $P\vee (Q \wedge R) \Longleftrightarrow (P\vee Q)\wedge (P\vee R)$
+			\end{enumerate}
+			\item Rules 4 and 5 are the \textbf{distributive laws}.
+			\item The two logical operations $\wedge$ and $\vee$ satisfy the \textbf{commutative} and associative laws.
+			\item \textbf{Definition:} Let P and Q be statements. We define the \textbf{exclusive or} operation, written $P\oplus Q$, by the following table.
+				\begin{displaymath}
+				\begin{array}{|c|c|c|c|c|c|c}
+				   P
+				 & Q
+				 & P\oplus Q\\
+				\hline
+				T & T & F\\
+				T & F & T\\
+				F & T & T\\
+				F & F & F\\
+				\hline
+				\end{array}
+				\end{displaymath}
+		\end{itemize}
+ 	\section{Conditionals, Tautologies, and Contradictions}
+		\begin{itemize}\addtolength{\leftskip}{2em}
+			\item Let P and Q be statements. The \textbf{conditional} "if P, then Q," written $P\Rightarrow Q$, has truth value according to the truth table below:
+				\begin{displaymath}
+				\begin{array}{|c|c|c|c|c|c|c}
+				P
+				& Q
+				& P\Rightarrow Q\\
+				\hline
+				T & T & T\\
+				T & F & F\\
+				F & T & T\\
+				F & F & T\\
+				\hline
+				\end{array}
+				\end{displaymath}
+			\item For the above statement, P is the \textbf{hypothesis}, and Q is the \textbf{conclusion}. 
+			\item For the conditional $P\Rightarrow Q$, the statement $Q\Rightarrow P$ is its \textbf{converse}, and the statement $\neg Q \Rightarrow \neg P$ is its \textbf{contrapositive}.
+			\item \textbf{Theorem:} Let P and Q be any two statements. Then $P\Rightarrow Q \Longleftrightarrow \neg Q \Rightarrow \neg P$.
+			\item Let P and Q be statements "P if and only if Q" is the \textbf{biconditional} of P with Q, written $P\Leftrightarrow Q$. The truth value of the bicondtional is given by the following truth table:
+				\begin{displaymath}
+				\begin{array}{|c|c|c|c|c|c|c}
+				P
+				& Q
+				& P \Leftrightarrow Q\\
+				\hline
+				T & T & T\\
+				T & F & F\\
+				F & T & F\\
+				F & F & T\\
+				\hline
+				\end{array}
+				\end{displaymath}
+			\item \textbf{Tautology:} An expression is whose truth value is \textbf{T} for all combinations of truth values
+			\item \textbf{Contradiction:} An expression is whose truth value is \textbf{F} for all combinations of truth values
+		\end{itemize}
+	\section{Methods of Proof}
+		\begin{itemize}\addtolength{\leftskip}{2em}
+			\item \textbf{Direct Proof:} explaining the reasoning behind your idea in words
+			\item \textbf{Proof by the contrapositive:} proving $\neg Q \Rightarrow \neg P$ (contrapositive)
+			\item \textbf{Proof by contradiction:} Considering the opposite of what you want to prove and proving that the opposite creates a contradiction. 
+		\end{itemize}
+	\section{Quantifiers}
+		\begin{itemize}\addtolength{\leftskip}{2em}
+			\item \textbf{Definition:} Let $P(x)$ is a propositional function with universal set X. The sentence
+			\begin{center}
+			For all $x\in X$, $P(x)$
+			\end{center}
+			is a \textbf{universally quantified statement} whose truth value is \textbf{T} if the truth set of $P(x)$ is the universal set X and F otherwise. We write:
+			\begin{center}
+			$(\forall x\in X)P(x)\quad\quad\quad$ where $\forall$ is the \textbf{universal quantifier}.
+			\end{center}
+			
+			\item \textbf{Definition:} Let $P(x)$ be a propositional function with universal set X. The sentence 
+			\begin{center}
+			There exists $x\in X$ such that $P(x)$
+			\end{center}
+			is an \textbf{existentially quantified statement} whose truth value \textbf{F} if the truth set of $P(x)$ has no elements and \textbf{T} otherwise. We write
+			\begin{center}
+			$(\exists x\in X)P(x)\quad\quad\quad$ where $\exists$ is the \textbf{existential quantifier}.
+			\end{center}
+			
+			\item \textbf{Definition:} Let $P(x)$ be a propositional function with universal set X. The sentence 
+			\begin{center}
+			There exists a unique $x\in X$ such that $P(x)$
+			\end{center}
+			is an \textbf{uniquely existentially quantified statement} whose truth value is \textbf{T} if the truth set of $P(x)$ has exactly one element and \textbf{F} otherwise. We Write
+			\begin{center}
+			$(\exists x!\in X)P(x)\quad\quad\quad$ where $\exists !$ is the \textbf{unique existential quantifier}.
+			\end{center}
+			\textbf{Theorem:} Let $P(x)$ be a propositional function with universal set X. Then the following hold:
+			\begin{enumerate}\addtolength{\leftskip}{4em}
+			\item $\neg[(\exists x)P(x)]\Longleftrightarrow (\forall x)[\neg P(x)]$
+			\item $\neg[(\forall x)P(x)]\Longleftrightarrow (\exists x)[\neg P(x)]$
+			\item \textbf{Definition:} Let X be the universal set for $P(x)$. An element $x_0$ is a \textbf{counterexample} to the statement $(\forall x)P(x)$ provided that $P(x_0)$ is false.
+			\end{enumerate}
+		\end{itemize}
+	
+\chapter{Numbers}
+	\section{Basic Ideas of Sets}
+		\begin{itemize}\addtolength{\leftskip}{2em}
+			\item \textbf{Set:} collection of objects
+			\item \textbf{Elements:} the objects in a set
+			\item \textbf{Set-builder notation:} the way mathematicians formulate sets
+				\subsubitem\textbf{ Colon ( : )} - stands for “such that”
+		\end{itemize}
+	\section{Sets of Numbers}
+		\begin{itemize}\addtolength{\leftskip}{2em}
+			\item \textbf{Natural Numbers:} $\mathbb{N}={1,2,3,4,5,6,7,8,...}$
+			\item \textbf{Positive Even Numbers:} $\mathbb{E}={2,4,6,8,10,...}$
+			\item \textbf{Rational Numbers:} $\mathbb{Q}={a/b:a,b\in Z\wedge b\ne 0}$
+			\item \textbf{Real Numbers:} All points on a number line.
+			\item \textbf{Complex Numbers:} $\mathbb{C}=\{a+bi:a,b\in\mathbb{R}\}$, where $i^2=-1$
+		\end{itemize}
+	\section{Some Properties of $\mathbb{N}$ and $\mathbb{Z}$}
+		\begin{itemize}
+			\item \textbf{Even:} Let $n\in Z$ Then n is even whenever there exists some $k\in \mathbb{Z}$ such that $n=2k$
+			\item \textbf{Odd:} Let $n\in Z$ Then n is odd whenever there exists some $k\in \mathbb{Z}$ such that $n=2k+1$
+			\item \textbf{Definition:} Let $a,b\in \mathbb{Z}$ with $a\ne 0$. Then a \textbf{divides} b, written $a\,|\,b$, when there exists an integer k such that $b=ak$. Equivalently, we may say that b is \textbf{divisible} by a, or that b is a \textbf{multiple} of a, or that a is a \textbf{divisor} of b. If $a\,|\,b$ and $1<a<|b|$, then a is a \textbf{proper divisor} of b.
+		\end{itemize}
+	\section{Prime Numbers}
+		\begin{itemize}\addtolength{\leftskip}{2em}
+			\item \textbf{Definition:} The number $p\in\mathbb{N}$ is \textbf{prime} if p has no proper divisor.
+			\item An integer greater than 1 that is not prime is \textbf{composite }. A \textbf{prime factorization} of any integer n is a representation of n as a product $n=(\pm)p_1p_2...p_k$ whose factors are prime numbers.
+			\item \textbf{The Fundamental Theorem of Arithmetic:} Every integer greater than 1 has a prime factorization that is unique up to the order in which the factors occur.
+			\item \textbf{Theorem:} There are infinitely prime numbers.
+		\end{itemize}
+	\section{gcd's and lcm's}
+		\begin{itemize}\addtolength{\leftskip}{2em}
+			\item \textbf{Definition:} Let $a,b\in\mathbb{Z}$. Then $c\in\mathbb{N}$ is a \textbf{common divisor} of a and b whenever $c\,|\,a$ and $c\,|\,b$.
+			\item \textbf{Definition:} Let $a,b\in\mathbb{Z}$ with a and b not both 0. Let $D(a,b)$ be the set of common divisors of a and b; that is,
+			\begin{center}
+			$D(a,b)=\{c\in\mathbb{N}:c\,|\,a\wedge c\,|\,b\}$
+			\end{center}
+			\item The \textbf{greatest common divisor of a and b}, denoted $gcd(a,b)$, is the largest element $D(a,b)$. We denote this element by $gcd(a,b)$. Thus,
+			\begin{center}
+			$(\forall c\in D(a,b))[c\le gcd(a,b)]$
+			\end{center}
+			\item When $gcd(a,b)=1$, we say that a and b are \textbf{relatively prime}.
+			\item \textbf{Definition:} Let $a,b$ be nonzero integers. Let $M(a,b)$ be the set of common multiples of a and b; that is
+			\begin{center}
+			$M(a,b)=\{m\in\mathbb{N}:a\,|\,m\wedge b\,|\, m\}$
+			\end{center}
+			\item The \textbf{least common multiple of a and b}, denoted $lcm(a,b)$ is the smallest element of $M(a,b)$. Thus
+			\begin{center}
+			$(\forall m\in M(a,b))[lcm(a,b)\le m]$
+			\end{center}
+			\item \textbf{Proposition:} For all $a,b\in\mathbb{N}$
+			\begin{center}
+			$ab=lcm(a,b)\cdot gcd(a,b)$
+			\end{center}
+		\end{itemize}
+	\section{Euclid's Algorithm}
+		\begin{itemize}\addtolength{\leftskip}{2em}
+			\item \textbf{Lemma}: Let $a,b,x\in\mathbb{Z}$ with a and b not both 0. Then
+			\begin{center}
+			$gcd(a,b)=gcd(a,b+ax)$
+			\end{center}
+			\item \textbf{Theorem (Euclid's Algorithm):} Let $a,b\in\mathbb{N}$. By applying the Division Algorithm repeatedly, let
+			\begin{center}
+				$a=bq_1+r_1\quad\quad\quad$ with $\quad 0<r_1<b$;
+			\end{center}
+			\begin{center}
+				$b=r_1q_2+r_2\quad\quad\quad$ with $\quad 0<r_2<r_1$;
+			\end{center}
+			\begin{center}
+				$r_1=r_2q_3+r_3\quad\quad\quad$ with $\quad 0<r_3<r_2$;
+			\end{center}
+			\begin{center}
+			...
+			\end{center}
+			\begin{center}
+				$r_{j-2}=r_{j-1}q_j+r_j\quad\quad\quad$ with $\quad 0<r_j<r_{j-1}$;
+			\end{center}
+			\begin{center}
+				$r_{j-1}=r_jq_{j+1}$.
+			\end{center}
+		\end{itemize}
+	\section{Rational Numbers and Algebraic Numbers}
+		\begin{itemize}\addtolength{\leftskip}{2em}
+			\item A \textbf{rational number} q is written \textbf{in lowest terms} when $q=\frac{a}{b}$ and $a,b$ are integer such that $gcd(|a|,|b|)=1$
+			\item We defined the set $\mathbb{I}$ of \textbf{irrational numbers} by $\mathbb{I}=\{x\in\mathbb{R}:x\ni\mathbb{Q}\}$
+		\end{itemize}
+
+\chapter{Sets}
+	\section{Subsets}
+		\begin{itemize}\addtolength{\leftskip}{2em}
+			\item \textbf{Definition:} Let A and B be sets. Then A is a \textbf{subset} of B, written $A\subseteq B$, when the statement $(\forall x)[x\in A \Rightarrow x\in B]$ is true.
+			\item For $B\supseteq A$, we say that B is a superset of A.
+			\item \textbf{Definition:} When sets are given in context of a subject, they have an assumed \textbf{universal set}.
+			\item \textbf{Proposition:} Let A, B, and C be sets. If $A\subseteq B$ and $B\subseteq C$, then $A\subseteq C$.
+			\item \textbf{Definition:} A set with no elements is an \textbf{empty set}.
+			\item Let A and B be sets. Then $A$ \textbf{equals} $B$, written $A=B$, when both $A\subseteq B$ and $B\subseteq A$. Thus the symbols A and B denote the same set.
+			\item \textbf{Definition:} A set A is a \textbf{proper subset} of a set B, written $A\subset B$, when A is a subset of B but $A\ne B$.
+			\item A statement of the form $(\forall x\in \O)P(x)$ is a \textbf{vacuous statement}.
+			\item \textbf{Definition:} Let A be a set. The set whose elements are all of the subsets of A is the \textbf{power set} of A, denoted $\mathcal P(A)$, and defined by :
+			\begin{center}
+				$\mathcal{P}(A)=\{S:S\subseteq A\}$
+			\end{center}
+		\end{itemize}
+	\section{Operations with Sets}
+		\begin{itemize}\addtolength{\leftskip}{2em}
+			\item \textbf{Definition:} Let A and B be sets.
+			\begin{itemize}\addtolength{\leftskip}{4em}
+				\item The \textbf{intersection} of A and B, written $A\cap B$, is the set
+					\subsubitem $A\cap B=\{x:x\in A\wedge x\in B\}$
+				\item The \textbf{union} of A and B, written $A\cup B$, is the set
+					\subsubitem $A\cup B=\{x:x\in A\vee x\in B\}$
+			\end{itemize}
+			\item \textbf{Proposition:} Let A,B,C be sets. Then all of the following hold:
+			\begin{enumerate}\addtolength{\leftskip}{4em}
+				\item $A\cap A=A$ and $A\cup A=A$
+				\item $\O \cap A = \O$ and $\O \cup A = A$
+				\item $(A\cap B)\subseteq A$
+				\item $A\subseteq (A\cup B)$
+				\item $A\cap(B\cap C)=(A\cap B)\cap C$
+				\item $A\cup(B\cup C)=(A\cup B)\cup C$
+				\item $A\cap (B\cup C)=(A\cap B)\cup (A\cap C)$
+				\item $A\cup (B\cap C)=(A\cup B)\cap(A\cup C)$
+			\end{enumerate}
+		\end{itemize}
+	\section{The Complement of a Set}
+		\begin{itemize}\addtolength{\leftskip}{2em}
+			\item \textbf{Definition:} Let A and B be sets. The \textbf{complement} of B relative to A, written $A\backslash B$, is the set
+			\begin{center}
+			$A\backslash B=\{x:x\in A \wedge x \notin B\}$
+			\end{center}
+			\item \textbf{Definition:} Let U be a universal set, then $U'=\O$ and $\O=U$. In the universe $\mathbb{N}$, the set of all odd natural numbers is 
+			\begin{center}
+			$A'=U\backslash A=\{x\in U:x\notin A\}$
+			\end{center}
+			\item \textbf{Proposition:} Let A and B be subsets of a universal set U. Then
+			\begin{enumerate}\addtolength{\leftskip}{4em}
+				\item $A\backslash B=A\cap B'$
+				\item $(B')'=B$
+				\item $(A\cup B)'=A'\cap B'$
+				\item $(A\cap B)'=A'\cup B'$
+				\item $A\subseteq B$ if and only if $B'\subseteq A$
+				\item $A\cup A'=U$
+				\item $A\cap A'=\O$
+				\item $A\cap B=\O$ if and only if $A\subseteq B'$
+				\item $A\subseteq B$ if and only if $A\backslash B=\O$
+			\end{enumerate}
+			\item Parts 3 and 4 are called \textbf{De Morgan's Laws}
+		\end{itemize}
+	\section{The Cartesian Product}
+		\begin{itemize}\addtolength{\leftskip}{2em}
+			\item \textbf{Definition:} Let A and B be sets. The \textbf{Cartesian product of A by B}, written $A\times B$, is the set
+			\begin{center}
+			$A\times B=\{(a,b):a\in A\wedge b\in B \}$
+			\end{center}
+			\item \textbf{Proposition:} Let A,B,C and D be sets. Then
+			\begin{enumerate}\addtolength{\leftskip}{4em}
+				\item $A\times (B\cup C)=(A\times B)\cup (A\times C)$
+				\item $A\times (B\cap C)=(A\times B)\cap (A\times C)$
+				\item $(A\times B)\cap (C\times D)=(A\cap C)\times (B\cap D)$
+				\item $(A\times B)\cap (B\times A)=(A\cap B)\times (A\cap B)$
+			\end{enumerate}
+		\end{itemize}
+\chapter{Induction}
+	\section{An Inductive Example}
+		\begin{itemize}\addtolength{\leftskip}{2em}
+			\item \textbf{Definition:} Define a set of lines in the plane to be in \textbf{general position} when 
+			\begin{enumerate}\addtolength{\leftskip}{4em}
+				\item No two of the lines are parallel, and
+				\item No three lines meet a common point
+			\end{enumerate} 
+			In these terms, your quest is now to find the number of regions created by 100 lines in the plane in general position.
+		\end{itemize}
+	\section{The Principle of Mathematical Induction}
+		\begin{itemize}\addtolength{\leftskip}{2em}
+			\item \textbf{Theorem: (The Principle of Mathematical Induction):} Let $n_0\in\mathbb{Z}$. For each integer $n\ge n_0$, let $\textbf{P}(n)$ be a statement about n. Suppose that the following two statements are true:
+			\begin{enumerate}\addtolength{\leftskip}{4em}
+				\item $\textbf{P}(n_0)$
+				\item $(\forall n\ge n_0)[\textbf{P}(n)\Rightarrow \textbf{P}(n+1)]$
+			\end{enumerate}
+			\subsubitem Then, for all integer $n\ge n_0$, the statement $\textbf{P}(n)$ is true.
+			\item \textbf{The Well ordering Principle:} Let $n_0\in \mathbb{Z}$. Every nonempty subset of the set $\{n\in \mathbb{Z}:n\ge n_0\}$
+			\item \textbf{Proposition:} For all \huge$n\in\mathbb{N}$, $\sum\limits_{k=1}^{n}k=\frac{n(n+1)}{2}$
+			\large\item \textbf{Induction Hypthesis:} When you assume $\textbf{P}(n)$
+		\end{itemize}
+	\section{The Principle of Strong Induction}
+		\begin{itemize}\addtolength{\leftskip}{2em}
+			\item \textbf{Theorem (The Principle of Strong Induction):} Let $n_0\in \mathbb{Z}$. For each integer $n\ge n_0$, let $\textbf{P}(n)$ be a statement about n. Suppose that the following two statements are true:
+			\begin{enumerate}\addtolength{\leftskip}{4em}
+				\item $\textbf{P}(n_0)$
+				\item $(\forall n\ge n_0)[(\wedge_{k=n_0}^{n}\textbf{P}(k))\Rightarrow P(n+1)]$
+				\subitem Then, for all integers $n\ge n_0$, the statement $\textbf{P}(n)$ is true.
+			\end{enumerate} 
+		\end{itemize}
+		
+\chapter{Functions}
+	\section{Functional Notation}
+		\begin{itemize}\addtolength{\leftskip}{2em}
+			\item \textbf{Definition:} Let X and Y be sets. A \textbf{function} f from X to Y, written $f:X\rightarrow Y$, is a rule that pairs an element $x\in X$ with an element $y\in Y$, written $f(x)=y$, such that the following property holds.
+			\begin{center}
+			$(\forall x\in X)(\exists !y\in Y)[f(x)=y]$
+			\end{center}
+			\subsubitem The set X is the \textbf{domain} of f and the set Y is the \textbf{codomain} of f. If $f(x)=y$, then y is the \textbf{image} of x and x is a preimage of y.
+			\item \textbf{Definition:} Two functions are \textbf{equal} when
+			\begin{enumerate}\addtolength{\leftskip}{4em}
+				\item They have the same domain and the same codomain, and
+				\item They agree at every element of their domain.
+			\end{enumerate}
+			\item \textbf{Definition:} Let $f:X\rightarrow Y$. The \textbf{range} of $f$ is the set
+			\begin{center}
+			$\{ y\in Y: (\exists x\in X)[f(x)=y] \}$
+			\end{center}
+			\item \textbf{Definition:} Let $f:X\rightarrow Y$. The \textbf{inverse} of $f$, denoted $f^{-1}$, is the pairing defined by the rule that, if $f(x)=y$, then $f^{-1}(y)=x$
+			\item 
+		\end{itemize}
+	\section{Operations with Functions}
+		\begin{itemize}\addtolength{\leftskip}{2em}
+			\item \textbf{Definition:} Let X and Y be any sets. A function $f:X\rightarrow Y$ is a \textbf{constant function} when the following property holds.
+			\begin{center}
+			$(\exists a\in Y)(\forall x\in Y)[f(x)=a]$
+			\end{center}
+			\item The function $(-1)g$ is written as $-g$ and is called the \textbf{negative} of g.
+			\item \textbf{Definition:} Let $S\subseteq\mathbb{R}$ and let $f:S\rightarrow\mathbb{R}$. Then $f$ is \textbf{increasing on} S if 
+			\begin{center}
+			$(\forall x_1,x_2\in S)[x_1<x_2\Rightarrow f(x_1)<f(x_2)]$
+			\end{center}
+			f is \textbf{decreasing on} S if
+			\begin{center}
+			$(\forall x_1,x_2\in S)[x_1<x_2\Rightarrow f(x_1)>f(x_2)]$
+			\end{center}
+			f is \textbf{nondecreasing on} S if
+			\begin{center}
+			$(\forall x_1,x_2\in S)[x_1<x_2\Rightarrow f(x_1)\le f(x_2)]$
+			\end{center}
+			and f is \textbf{nonincreasing on} S if
+			\begin{center}
+			$(\forall x_1,x_2\in S)[x_1<x_2\Rightarrow f(x_1)\ge f(x_2)]$
+			\end{center}
+			\item \textbf{Definition:} Let X,Y, and Z be sets. Let functions $f:X\rightarrow Y$ and $g:Y\rightarrow Z$ be given.\newline Then the \textbf{composition of g with f}, written $g\circ f$, is defined by
+			\begin{center}
+			$(\forall x\in X)[(g\circ f)(x)=g(f(x))]$
+			\end{center}
+		\end{itemize}
+	\section{Induced Set Functions}
+		\begin{itemize}\addtolength{\leftskip}{2em}
+			\item \textbf{Definition:} Let $f:X\rightarrow Y$. The \textbf{set function induced by f} is the function $\bar{f}:\mathcal{P}(X)\rightarrow \mathcal{P}(Y)$ defined by the rule that, for all $A\in\mathcal{P}(X)$,
+			\begin{center}
+			\Large$\bar{f}(A)=\{ y\in Y:(\exists x\in A)[f(x)=y] \}=\{ f(x):x\in A \}$
+			\end{center}
+			\item \textbf{Theorem:} Let $f:X\rightarrow Y$ and let $A,B\in\mathcal{P}(X)$. Then the following hold.
+			\begin{itemize}\addtolength{\leftskip}{2em}
+				\item $A\subseteq B \Rightarrow \bar{f}(A)\subseteq\bar{f}(B)$
+				\item $\bar{f}(A\cap B)\subseteq \bar{f}(A)\cap\bar{f}(B)$
+				\item $\bar{f}(A\cup B)=\bar{f}(A)\cup \bar{f}(B)$
+			\end{itemize}
+			\item \textbf{Proposition:} Let A,B $\subseteq X$ and $f:X\rightarrow Y$. Then
+			\begin{center}
+				$\bar{f}(A)\backslash \bar{f}(B)\subseteq \bar{f}(A\backslash B)$
+			\end{center}
+			\item \textbf{Definition:} Let $f:X\rightarrow Y$. For each set $B\in \mathcal{P}(Y)$, define the function $\bar{f^{-1}}:\mathcal{P}(Y)\rightarrow \mathcal{P}(X)$ by
+			\begin{center}
+				$\bar{f^{-1}}(B)=\{ x\in X:f(x)\in B \}$
+			\end{center}
+		\end{itemize}
+	\section{Surjections, Injections, and Bijections}
+		\begin{itemize}\addtolength{\leftskip}{2em}
+			\item \textbf{Definition:} A function $f:X\rightarrow Y$ with the property
+			\begin{center}
+				$(\forall y\in Y)(\exists x\in X)[f(x)=y]$
+			\end{center}
+			\subsubitem is a \textbf{surjection} of X onto Y 
+			\item \textbf{Proposition:} The composition of two surjections is a surjection. 
+			\item \textbf{Definition:} A function $f:X\rightarrow Y$ with the property
+			\begin{center}
+				$(\forall x_1,x_2\in X)[x_1\ne x_2\Rightarrow f(x_1)\ne f(x_2)]$
+			\end{center}
+			\subsubitem is an \textbf{injection} of X into Y
+			\item \textbf{Proposition:} The composition of two injections is an injection.
+			\item \textbf{Theorem:} If the function $f:X\rightarrow Y$ is an injection, then so is its induced set function $\bar{f}:\mathcal{P}(X)\rightarrow \mathcal{P}(Y)$
+			\item \textbf{Definition:} A function that is both an injection and surjection is a bijection.
+			\item \textbf{Corollary:} The composition of two bijections is a bijection.
+		\end{itemize}
+
+	\vspace{45em}
+	
+	\begin{center}
+	\textbf{\huge{Bibliography}}
+	\end{center}
+	\textbf{Book used:} Passage to Abstract Mathematics\newline
+	\textbf{Professor:} Notes from Dr. Jeff Meyer's Fall 2012 Abstract Mathematics course
+\end{document}
